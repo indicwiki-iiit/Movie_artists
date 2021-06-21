@@ -1,0 +1,133 @@
+{%- macro career(IMDB_id,name,wiki_data_id,occup,occup1_num,occup2_num,occup3_num,occup4_num,debut_films,debut_filmseng,latest_films,latest_filmseng,Gender,occuplen) -%}
+
+{{- "==కెరీర్( career )==" -}}
+{{- '\n' -}}
+{%- if Gender=='female' -%}
+    {%- for i in range(0,occuplen*3,3) -%}
+        {%- if occup[i//3]=='సంగీత విభాగము' -%}
+            {%- set line1= [debut_films[i],' లో ',debut_films[i+1],' సినిమాతో ',occup[i//3],'గా అడుగు పెట్టింది.'] |join('') -%}
+            {{line1}}
+        
+        {%- elif debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+            {%- set line1= [debut_films[i],' లో ',debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా తెరంగ్రేటం చేసింది.'] |join('') -%}
+            {%- set line2= [debut_films[i],' లో ',debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా ప్రజలకు పరిచయం అయింది.']|join('') -%}
+            {%- set line3= [debut_films[i],' లో ',debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా తొలి పరిచయం అయింది.']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+
+        {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+          {%- set line1= [debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా తెరంగ్రేటం చేసింది.'] |join('') -%}
+          {{line1}}
+        {%-endif-%}
+    {%-endfor -%}
+    {%- if latest_films[1] !=''-%}
+        ఇటీవల{{- ' ' -}}
+        {%- for i in range(0,occuplen*3,3) -%}
+            {%- if debut_films[i+1]!=latest_films[i+1]-%}
+            {%- if occup[i//3]=='సంగీత విభాగము'-%}
+                 {{latest_films[i+1]}}({{latest_filmseng[i+1]}}) లో {{occup[i//3]}} తో  
+            {%- elif  latest_films[i+1] !='' and occup[i//3]!='Self' and occup[i//3]!='Thanks' and  occup[i//3]!='' -%}
+                 {{latest_films[i+1]}}({{latest_filmseng[i+1]}}) లో {{occup[i//3]}} గా 
+            {%- endif -%}
+            {%- endif -%}
+        {%-endfor -%}
+        {{- ' ' -}}ప్రజల ముందుకు వచ్చింది.
+    {%-endif-%}
+    {{- '\n\n' -}}
+    {%- if  occuplen !=0 and occup[1] !='Self' and occup[1] !='Thanks' and occup1_num!=0 -%}
+    తన సినీ జీవితంలో ఇప్పటివరకు {{occup[0]}} గా {{occup1_num}}
+    {%- if occup[1] !='' and occup[1] !='Self' and occup[1] !='Thanks' and occup2_num!=0 -%}
+    ,{{occup[1]}} గా {{occup2_num}} {%- endif -%}
+    {%- if occup[2] !='' and occup[2] !='Self' and occup[2] !='Thanks' and occup3_num!=0 -%}
+    , {{occup[2]}} గా {{occup3_num}}{%- endif -%}
+    {%- if occup[3] !=''and occup[3] !='Self' and occup[3] !='Thanks' and occup4_num!=0 -%}
+    , {{occup[3]}} గా {{occup4_num}} {%- endif -%}
+    సినిమాలు చేసింది .{%- endif -%} 
+    మొత్తం గా {{occup1_num+occup2_num+occup3_num+occup4_num}} సినిమాలకు పని చేసింది. 
+{%- endif -%}
+{%- if Gender=='male' -%}
+    {%- for i in range(0,occuplen*3,3) -%}
+        {%- if occup[i//3]=='సంగీత విభాగము' and debut_films[i] !='' and debut_films[i+1] !=''  -%}
+            {%- set line1= [debut_films[i],' లో ',debut_films[i+1],' సినిమాతో ',occup[i//3],'గా అడుగు పెట్టాడు.'] |join('') -%}
+            {{line1}}
+
+        
+        
+        {%- elif debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+            {%- set line1= [debut_films[i],' లో ',debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా తెరంగ్రేటం చేశాడు.'] |join('') -%}
+            {%- set line2= [debut_films[i],' లో ',debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా ప్రజలకు పరిచయం అయ్యాడు.']|join('') -%}
+            {%- set line3= [debut_films[i],' లో ',debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' ,' సినిమాతో ',occup[i//3],'గా తొలి పరిచయం అయ్యాడు.']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+
+         {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+          {%- set line1= [debut_films[i+1], '(' ,debut_filmseng[i+1] ,')' , ' సినిమాతో ',occup[i//3],'గా తెరంగ్రేటం చేశాడు.'] |join('') -%}
+          {{line1}}
+        {%-endif-%}
+    {%-endfor -%}
+    
+    {%- if latest_films[1] !=''  -%}
+        ఇటీవల{{- ' ' -}} 
+        {%- for i in range(0,occuplen*3,3) -%}
+            {%- if debut_films[i+1] !=latest_films[i+1]-%}
+            {%- if occup[i//3]=='సంగీత విభాగము' -%}
+                {{latest_films[i+1]}}({{latest_filmseng[i+1]}}) లో {{occup[i//3]}} తో  
+            {%- elif  latest_films[i+1] !='' and occup[i//3]!='Self' and occup[i//3]!='Thanks' and  occup[i//3]!='' -%}
+                 {{latest_films[i+1]}}({{latest_filmseng[i+1]}}) లో {{occup[i//3]}} గా 
+            {%- endif -%}
+            {%-endif-%}
+        {%-endfor -%}
+        {{- ' ' -}}ప్రజల ముందుకు వచ్చాడు.
+    {%-endif-%}
+    {{- '\n\n' -}}
+    {%- if  occuplen !=0 and occup[1] !='Self' and occup[1] !='Thanks' and occup1_num!=0 -%}
+    తన సినీ జీవితంలో ఇప్పటివరకు {{occup[0]}} గా {{occup1_num}}
+    {%- if occup[1] !='' and occup[1] !='Self' and occup[1] !='Thanks' and occup2_num!=0  -%}
+    ,{{occup[1]}} గా {{occup2_num}} {%- endif -%}
+    {%- if occup[2] !=''and occup[2] !='Self' and occup[2] !='Thanks' and occup3_num!=0  -%}
+    , {{occup[2]}} గా {{occup3_num}}{%- endif -%}
+    {%- if occup[3] !='' and occup[3] !='Self' and occup[3] !='Thanks' and occup4_num!=0-%}
+    , {{occup[3]}} గా {{occup4_num}} {%- endif -%} 
+    సినిమాలు చేసాడు .{%- endif -%} 
+    మొత్తం గా {{occup1_num+occup2_num+occup3_num+occup4_num}} సినిమాలకు పని చేసాడు. 
+{%- endif -%}
+<ref name='careerfilmo'>https://www.imdb.com/name/{{IMDB_id}}/?nmdp=1&ref_=nm_ql_4#filmography {{name}}</ref>
+{%- endmacro -%}
+
+
+{%- macro references(IMDB_id,wiki_data_id) -%}
+    {{- '\n\n' -}}
+    {{- "==మూలాలు (References)==" -}}
+    {{- '\n' -}}
+    {{'{{reflist}}'}}
+{%- endmacro -%}
+
+
+{%- macro externallinks(name,facebookid,instaid,twitterid,IMDB_id) -%}
+    {{- '\n' -}}
+    {{- "==బాహ్య లింకులు (External Links)==" -}}
+    {{- '\n' -}}
+    {%- if facebookid is not float -%}
+        {{name}} ఫేసుబుక్ ఐడి: [https://www.facebook.com/{{facebookid}}/ {{facebookid}}]
+        {{- '\n\n' -}}
+    {%- endif -%}
+    {%- if instaid is not float -%}
+        {{name}} ఇంస్టాగ్రామ్ ఐడి: [https://www.instagram.com/{{instaid}}/?hl=en {{instaid}}]
+        {{- '\n\n' -}}
+    {%- endif -%}
+    {%- if twitterid is not float -%}
+        {{name}} ట్విట్టర్ ఐడి: [https://twitter.com/{{twitterid}}?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor {{twitterid}}]
+        {{- '\n\n' -}}
+    {%- endif -%}
+        {{name}} ఐఎండిబి(IMDb) పేజీ: [https://www.imdb.com/name/{{IMDB_id}} {{IMDB_id}}] 
+{%- endmacro -%}
+
+
+{{- career(IMDB_id,name,wiki_data_id,occup,occup1_num,occup2_num,occup3_num,occup4_num,debut_films,debut_filmseng,latest_films,latest_filmseng,Gender,occuplen) -}}
+
+{{- references(IMDB_id,wiki_data_id) -}}
+
+{{- externallinks(name,facebookid,instaid,twitterid,IMDB_id) -}}
+
+
+
+
+		

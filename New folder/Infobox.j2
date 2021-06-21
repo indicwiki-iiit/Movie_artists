@@ -1,0 +1,100 @@
+﻿{% set category={'Artist':''} %}
+{# category updated in descLine and used in ending  #}
+
+{% macro infobox(IMDB_id,Image,Name, Name_in_native_language, Birthname, Alternate_Name, wiki_DOB,DOD,Actor_POB, Gender,Citizenship, wiki_occupation,
+Work_period_start,twitterid,instaid,wiki_family_name,Work_period_end,Height,Star_Sign,Ethnic_group,wiki_spouse_name,Child_Name,Father_Name, Mother_Name,Wiki_commons_category,wiki_siblings,Relatives,Signature_image) %}
+    {{'{{Infobox person'}}
+    {%- if Name is not float -%}
+    | name = {{Name}}
+    {% endif %}
+    {%- if Image is not float -%}
+    | image= [[File:{{Image}}]] <ref name='img'>  {%- if Wiki_commons_category is not float -%} https://commons.wikimedia.org/wiki/Category:{{Wiki_commons_category}}</ref> {% endif %}
+    | caption = Image of {{Name}}
+    {% endif %}
+    {%- if Name_in_native_language is not float -%}
+    | native_name= {{Name_in_native_language}}
+    {% endif %}
+    {%- if Birthname is not float -%}
+    | 	birth_name= {{Birthname}}
+    {% endif %}
+    {%- if wiki_DOB is not float -%}
+    | birth_date 	= {{wiki_DOB}}
+    {% endif %}
+    {%- if DOD is not float -%}
+    | death_date	= {{DOD}}
+    {% endif %}
+    {%- if Actor_POB is not float -%}
+    | birth_place = {{Actor_POB}}
+    {% endif %}
+    {%- if Citizenship is not float -%}
+    | citizenship	= {{Citizenship}}
+    {% endif %}
+    {%- if Alternate_Name is not float -%}
+    | other_names	= {{Alternate_Name}}<ref name='altnames'>https://www.imdb.com/name/{{IMDB_id}}/?ref_=fn_al_nm_2</ref>
+    {% endif %}
+    {%- if wiki_occupation is not float -%}
+    | occupation = {{wiki_occupation}}
+    {% endif %}
+    {%- if Work_period_start is not float and Work_period_end is not float -%}
+    | years_active	= {{Work_period_start}} -- {{Work_period_end}}
+    {%- elif Work_period_start is not float and Work_period_end is float -%}
+    | years_active	= {{Work_period_start}} నుండి మొదలు
+    {% endif %}
+    {%- if Height is not float -%}
+    | height  = {{Height}}
+    {% endif %}
+    {%- if wiki_spouse_name is not float -%}
+    | spouse  = {{wiki_spouse_name}}
+    {% endif %}
+    {%- if Child_Name is not float -%}
+    | children  = {{Child_Name}}
+    {% endif %}
+    {%- if Father_Name is not float -%}
+    | father  = {{Father_Name}}
+    {% endif %}
+    {%- if Mother_Name is not float -%}
+    | mother  = {{Mother_Name}}
+    {% endif %}
+    {%- if Relatives is not float -%}
+    | relatives  = {{Relatives}}
+    {% endif %}
+    {%- if wiki_siblings is not float -%}
+    | family  = {{wiki_siblings}} (తోబుట్టువులు)
+    {% endif %}
+    {%- if Signature_image is not float -%}
+    | signature  = [[File:{{Signature_image}}]]
+    {% endif %}
+{{'}}\n'}}
+{%- endmacro -%}
+
+
+{%- if wiki_family_name is not float -%}
+[[Category:{{wiki_family_name}} ఇంటిపేరు గల చిత్రసీమ ప్రముఖులు.]]
+{% endif %}
+
+{%- if Actor_POB is not float -%}
+[[Category:{{Actor_POB}} నుండి ప్రముఖులు.]]
+{% endif %}
+
+{%- if Star_Sign is not float -%}
+[[Category:{{Star_Sign}} నక్షత్రం గుర్తు ప్రముఖులు.]]
+{% endif %}
+
+{%- if wiki_occupation is not float -%}
+[[Category:{{wiki_occupation}}]] 
+    {% endif %}
+
+{%- if twitterid is not float -%}
+[[Category:ట్విట్టర్ ఖాతాదారులు.]] 
+    {% endif %}
+
+{%- if instaid is not float -%}
+[[Category:ఇంస్టాగ్రామ్  ఖాతాదారులు.]] 
+    {% endif %}
+
+
+
+
+
+{{ infobox(IMDB_id,Image,Name, Name_in_native_language, Birthname, Alternate_Name, wiki_DOB,DOD,Actor_POB, Gender,Citizenship, wiki_occupation,
+Work_period_start,wiki_family_name,twitterid,instaid,Work_period_end,Height,Star_Sign,Ethnic_group,wiki_spouse_name,Child_Name,Father_Name, Mother_Name,Wiki_commons_category,wiki_siblings,Relatives,Signature_image) }}

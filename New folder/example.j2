@@ -1,0 +1,402 @@
+   {#- name, occupations, count, movie_name, film_year, movieid  -#}
+   {%- macro filmo(filmo_occupation,filmo_all_film_ocupations,latest_films,occup1_num,occup1_films,occup2_num,occup2_films,occup3_num,occup3_films,occup4_num,occup4_films,occup1_filmseng,occup2_filmseng,occup3_filmseng,occup4_filmseng,debut_films) -%}
+
+    {{- "==ఫిల్మోగ్రఫీ==" -}}
+    
+       
+        {{- '\n\n' -}}
+        {%- if Gender == 'female' -%}
+            {%- if filmo_all_film_ocupations[0]=='' -%}
+            
+            {%- else -%}
+            ===={{filmo_all_film_ocupations[0]}}==== 
+                {{- '\n' -}}
+                    {%- if filmo_all_film_ocupations[0] != float -%}
+                    {%- set st=occup1_num|string -%}
+                    <ref name='filmo'>[https://www.imdb.com/name/{{IMDBid}}/?nmdp=1&ref_=nm_ql_4#filmography {{Name}} filmography link]</ref>
+                        {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[0]+ ' గా పని చేసింది.',
+                                            filmo_all_film_ocupations[0]+' గా '+st+' సినిమాలలో పని చేసింది.']|random-%}{{filmorand}}{{- '\n' -}}
+                        
+                        {{- '\n' -}}
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[0] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                            filmo_all_film_ocupations[0]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                        {{- '\n' -}}
+                            
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for j in range(0,sam,3) -%}
+                                        {%- if occup1_films[j]!='' -%}
+                                            {%- set occup1=occup1_films[j] -%}
+                                        {%- else -%}
+                                            {% set occup1='-' %}
+                                        {%- endif -%}
+                                        |-
+                                        | {{occup1}} || {{occup1_films[j+1]}}{{'('}}{{occup1_filmseng[j+1]}}{{')'}} || [https://www.imdb.com/title/{{occup1_films[j+2]}}/ {{occup1_films[j+1]}} ]
+                                        {{'\n'}}
+                                        
+                                        {%- endfor -%}
+
+                                        |}{{- '\n' -}}
+                        {%- endif -%}
+            {%- endif -%}
+
+            
+
+            {%- if filmo_all_film_ocupations[1]=='' -%}
+            
+            {%- else -%}
+            ===={{filmo_all_film_ocupations[1]}}==== 
+            {{- '\n' -}}
+                {%- if filmo_all_film_ocupations[1] != float -%}
+                {%- set st=occup2_num|string -%}
+                    {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[1]+ ' గా పని చేసింది.',
+                                        filmo_all_film_ocupations[1]+' గా '+st+' సినిమాలలో పని చేసింది.']|random-%}{{filmorand}}{{- '\n' -}}
+                    {{- '\n' -}}
+                    {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[1] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                        filmo_all_film_ocupations[1]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                    {{- '\n' -}}
+                        
+                            {| class = "wikitable"
+                                |-
+                                ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                |-
+                                {%- for k in range(0,san,3) -%}
+                                    {%- if occup2_films[k]!=''  -%}
+                                        {%- set occup2=occup2_films[k] -%}
+                                    {%- else -%}
+                                        {% set occup2='-' %}
+                                    {%- endif -%}
+                                    
+                                    |-
+                                    | {{occup2}} || {{occup2_films[k+1]}}{{'('}}{{occup2_filmseng[k+1]}}{{')'}} || [https://www.imdb.com/title/{{occup2_films[k+2]}}/ {{occup2_films[k+1]}} ]
+                                    {{'\n'}}
+                                    
+                                {%- endfor -%}
+                                
+                                |}{{- '\n' -}}
+                {%- endif -%}
+            {%- endif -%}
+            
+
+            {%- if filmo_all_film_ocupations[2]=='' -%}
+            
+            {%- else -%}
+            ===={{filmo_all_film_ocupations[2]}}====
+            {{- '\n' -}}
+                {%- if filmo_all_film_ocupations[2] != float -%}
+                {%- set st=occup3_num|string -%}
+                    {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[2]+ ' గా పని చేసింది.',
+                                        filmo_all_film_ocupations[2]+' గా '+st+' సినిమాలలో పని చేసింది.']|random-%}{{filmorand}}{{- '\n' -}}
+                    {{- '\n' -}}
+                    {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[2] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                        filmo_all_film_ocupations[2]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                    {{- '\n' -}}
+                        
+                            {| class = "wikitable"
+                                |-
+                                ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                |-
+                                {%- for l in range(0,ran,3) -%}
+                                    {%- if occup3_films[l]!=''  -%}
+                                        {%- set occup3=occup3_films[l] -%}
+                                    {%- else -%}
+                                        {% set occup3='-' %}
+                                    {%- endif -%}
+                                    |-
+                                    | {{occup3}} || {{occup3_films[l+1]}}{{'('}}{{occup3_filmseng[l+1]}}{{')'}} || [https://www.imdb.com/title/{{occup3_films[l+2]}}/ {{occup3_films[l+1]}} ]
+                                    {{'\n'}}
+                                    
+                                    
+                                {%- endfor -%}
+                                
+                                |}{{- '\n' -}}
+                {%- endif -%}
+            {%- endif -%}
+            
+
+            {%- if filmo_all_film_ocupations[3]=='' -%}
+            
+            {%- else -%}
+                ===={{filmo_all_film_ocupations[3]}}====
+                {{- '\n' -}} 
+                    {%- if filmo_all_film_ocupations[3] != float -%}
+                    {%- set st=occup4_num|string -%}
+                        {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[3]+ ' గా పని చేసింది.',
+                                            filmo_all_film_ocupations[3]+' గా '+st+' సినిమాలలో పని చేసింది.']|random-%}{{filmorand}}{{- '\n' -}}
+                        {{- '\n' -}}
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[3] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                            filmo_all_film_ocupations[3]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                        {{- '\n' -}}
+                            
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for q in range(0,man,3) -%}
+                                        {%- if occup4_films[q]!=''  -%}
+                                            {%- set occup4=occup4_films[q] -%}
+                                        {%- else -%}
+                                            {% set occup4='-' %}
+                                        {%- endif -%}
+                                        
+                                        |-
+                                        | {{occup4}} || {{occup4_films[q+1]}}{{'('}}{{occup4_filmseng[q+1]}}{{')'}} || [https://www.imdb.com/title/{{occup4_films[q+2]}}/ {{occup4_films[q+1]}} ]
+                                        {{'\n'}}
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}
+                    {{- '\n\n' -}}
+                    {%- endif -%}
+                {%- endif -%}
+        {%- endif -%}
+
+        {%- if Gender== 'male' -%}
+        
+
+        {%- if filmo_all_film_ocupations[0]=='' -%}
+            
+            {%- else -%}
+            {%- if filmo_all_film_ocupations[0] != float -%}
+            {%- set st=occup1_num|string -%}
+            ===={{filmo_all_film_ocupations[0]}}==== 
+            {{- '\n' -}}
+            <ref name='filmo'>[https://www.imdb.com/name/{{IMDBid}}/?nmdp=1&ref_=nm_ql_4#filmography {{Name}} filmography link]</ref>
+                {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[0]+ ' గా పని చేశాడు.',
+                                    filmo_all_film_ocupations[0]+' గా '+st+' సినిమాలలో పని చేశాడు.']|random-%}{{filmorand}}{{- '\n' -}}
+                
+                {{- '\n' -}}
+                {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[0] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                    filmo_all_film_ocupations[0]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                {{- '\n' -}}
+                    
+                        {| class = "wikitable"
+                            |-
+                            ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                            |-
+                            {%- for j in range(0,sam,3) -%}
+                               {%- if occup1_films[j]!=''  -%}
+                                    {%- set occup1=occup1_films[j] -%}
+                                {%- else -%}
+                                    {% set occup1='-' %}
+                                {%- endif -%}
+                                |-
+                                | {{occup1}} || {{occup1_films[j+1]}}{{'('}}{{occup1_filmseng[j+1]}}{{')'}} || [https://www.imdb.com/title/{{occup1_films[j+2]}}/ {{occup1_films[j+1]}} ]
+                                {{'\n'}}
+                            {%- endfor -%}
+                            
+                            |}{{- '\n' -}}
+            {%- endif -%}
+        {%- endif -%}
+        
+
+        {%- if filmo_all_film_ocupations[1]=='' -%}
+            
+            {%- else -%}
+            {%- if filmo_all_film_ocupations[1] != float -%}
+            {%- set st=occup2_num|string -%}
+            ===={{filmo_all_film_ocupations[1]}}==== 
+            {{- '\n' -}}
+                {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[1]+ ' గా పని చేశాడు.',
+                                    filmo_all_film_ocupations[1]+' గా '+st+' సినిమాలలో పని చేశాడు.']|random-%}{{filmorand}}{{- '\n' -}}
+                {{- '\n' -}}
+                {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[1] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                    filmo_all_film_ocupations[1]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                {{- '\n' -}}
+                    
+                        {| class = "wikitable"
+                            |-
+                            ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                            |-
+                            {%- for k in range(0,san,3) -%}
+                                {%- if occup2_films[k]!=''  -%}
+                                    {%- set occup2=occup2_films[k] -%}
+                                {%- else -%}
+                                    {% set occup2='-' %}
+                                {%- endif -%}
+                                
+                                |-
+                                | {{occup2}} || {{occup2_films[k+1]}}{{'('}}{{occup2_filmseng[k+1]}}{{')'}} || [https://www.imdb.com/title/{{occup2_films[k+2]}}/ {{occup2_films[k+1]}} ]
+                                {{'\n'}}
+                                
+                            {%- endfor -%}
+                            
+                            |}{{- '\n' -}}
+            {%- endif -%}
+        {%- endif -%}
+
+            {%- if filmo_all_film_ocupations[2]=='' -%}
+            
+            {%- else -%}
+                        {%- if filmo_all_film_ocupations[2] != float -%}
+                        {%- set st=occup3_num|string -%}
+                        ===={{filmo_all_film_ocupations[2]}}==== 
+                        {{- '\n' -}}
+                            {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[2]+ ' గా పని చేశాడు.',
+                                                filmo_all_film_ocupations[2]+' గా '+st+' సినిమాలలో పని చేశాడు.']|random-%}{{filmorand}}{{- '\n' -}}
+                            {{- '\n' -}}
+                            {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[2] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                                filmo_all_film_ocupations[2]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                            {{- '\n' -}}
+                                
+                                    {| class = "wikitable"
+                                        |-
+                                        ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                        |-
+                                        {%- for l in range(0,ran,3) -%}
+                                            {%- if occup3_films[l]!=''  -%}
+                                                {%- set occup3=occup3_films[l] -%}
+                                            {%- else -%}
+                                                {% set occup3='-' %}
+                                            {%- endif -%}
+                                            |-
+                                            | {{occup3}} || {{occup3_films[l+1]}}{{'('}}{{occup3_filmseng[l+1]}}{{')'}} || [https://www.imdb.com/title/{{occup3_films[l+2]}}/ {{occup3_films[l+1]}} ]
+                                            {{'\n'}}
+                                            
+                                        {%- endfor -%}
+                                        
+                                        |}{{- '\n' -}}
+                        {%- endif -%}
+                {%- endif -%}
+            
+            
+            {%- if filmo_all_film_ocupations[3]=='' -%}
+            
+            
+            {%- else -%}
+                    {%- if filmo_all_film_ocupations[3] != float -%}
+                    {%- set st=occup4_num|string -%}
+                    ===={{filmo_all_film_ocupations[3]}}====
+                    {{- '\n' -}}
+                        {%- set filmorand=[st+ ' సినిమాలలో ' +filmo_all_film_ocupations[3]+ ' గా పని చేశాడు.',
+                                            filmo_all_film_ocupations[3]+' గా '+st+' సినిమాలలో పని చేశాడు.']|random-%}{{filmorand}}{{- '\n' -}}
+                        {{- '\n' -}}
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[3] +  ' గా పని చేసిన కొన్ని చిత్రాల జాబితా.',
+                                            filmo_all_film_ocupations[3]+' గా '+Name+' పని చేసిన కొన్ని చిత్రాల జాబితా ']|random-%}{{filmorand}}
+                        {{- '\n' -}}
+                            
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for q in range(0,man,3) -%}
+                                        {%- if occup4_films[q]!=''  -%}
+                                            {%- set occup4=occup4_films[q] -%}
+                                        {%- else -%}
+                                            {% set occup4='-' %}
+                                        {%- endif -%}
+                                        
+                                        |-
+                                        | {{occup4}} || {{occup4_films[q+1]}}{{'('}}{{occup4_filmseng[q+1]}}{{')'}} || [https://www.imdb.com/title/{{occup4_films[q+2]}}/ {{occup4_films[q+1]}} ]
+                                        {{'\n'}}
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}
+                    {{- '\n\n' -}}
+                    {%- endif -%}
+            {%- endif -%}
+        {%- endif -%}
+        
+
+        
+    
+    {%- endmacro -%}{{- '\n\n' -}}
+
+
+
+
+
+
+    {#- year, award_outcome, award_name, award_description -#}
+
+    {%- macro data(No_of_Awards) -%}
+        {{- "==అవార్డులు==" -}}
+        {{- '\n' -}}
+        
+            {{- '\n\n' -}}
+    {%- if No_of_Awards is not float -%}
+        {%- if Gender=='male' -%}
+            <ref name='award'>[https://www.imdb.com/name/{{IMDBid}}/awards?ref_=nm_ql_2 {{Name}} awards link]</ref>
+            {%- set awardrand= ['తన సినీ జీవితం లో ' +No_of_Awards+ ' చూపుతుంది',
+                                No_of_Awards+' ని తన సినీ జీవితం లో పొందాడు']|random -%}{{awardrand}}
+            
+        {%- endif -%}
+        {%- if Gender=='female' -%}
+        <ref name='award'>[https://www.imdb.com/name/{{IMDBid}}/awards?ref_=nm_ql_2 {{Name}} awards link]</ref>
+            {%- set awardrand= ['తన సినీ జీవితం లో ' +No_of_Awards+ ' చూపుతుంది',
+                                No_of_Awards+' ని తన సినీ జీవితం లో పొందింది']|random -%}{{awardrand}}
+            
+        {%- endif -%}
+        {%- endif -%}
+         {{-'\n\n'-}}
+     {%- endmacro -%}
+     
+
+
+     {%- macro n(Name) -%}
+         {{Name}} అవార్డుల జాబితా
+         {{-'\n\n'-}}
+     {%- endmacro -%}
+
+     {%- macro awards(Year_Of_The_Award,Award_Outcome,Award_Category,Award_Categoryeng,Award_Description) -%}
+        
+            {| class="wikitable sortable ", style="display:inline-block; vertical-align:top; width:40em; height:16em; overflow:auto; border:2px solid orange;"
+                ! scope="col" | సంవత్సరం
+                ! scope="col" | అవార్డు పేరు
+                ! scope="col" | అవార్డు వివరణ
+                ! scope="col" | ఫలితం
+            |-  
+            {%- for i in range(length) -%}
+                {%- if Year_Of_The_Award[i]!=''  -%}
+                    {%- set a=Year_Of_The_Award[i] -%}
+                {%- else -%}
+                    {% set a='-' %}
+                {%- endif -%}
+                {%- if Award_Category[i]!=''  -%}
+                    {% set b=[Award_Category[i],'(',Award_Categoryeng[i],')']|join('') %}
+                {%- else -%}
+                    {% set b='-' %}
+                {%- endif -%}
+                {%- if Award_Outcome[i]!=''  and Award_Outcome[i]=='Winner' -%}
+                    {% set c='{{won|విజేత}}' %}
+                {%- elif  Award_Outcome[i]!=''  and Award_Outcome[i]=='Nominee' -%}
+                    {% set c='{{nom|పేర్కొనబడ్డాడు}}' %}
+                {%- else -%}
+                    {% set c='-' %}
+                {%- endif -%}
+                {%- if Award_Description[i]!=''  -%}
+                    {% set d=Award_Description[i] %}
+                {%- else -%}
+                    {% set d='-' %}
+                {%- endif -%}
+
+                {{'\n'}}
+                    | {{a}} || {{b}} || {{d}}  || {{c}}
+                    |-
+                    {{'\n'}}
+                
+                
+            {%- endfor -%}
+        [[category: {{Award_Category[0]}}]]
+
+            |}{{- '\n\n' -}}
+            
+        
+     {%- endmacro -%}
+
+    
+     
+
+
+   
+{{- filmo(filmo_occupation,filmo_all_film_ocupations,latest_films,occup1_num,occup1_films,occup2_num,occup2_films,occup3_num,occup3_films,occup4_num,occup4_films,occup1_filmseng,occup2_filmseng,occup3_filmseng,occup4_filmseng,debut_films) -}}
+{{- data(No_of_Awards) -}}
+{{- n(Name) -}}
+{{- awards(Year_Of_The_Award,Award_Outcome,Award_Category,Award_Categoryeng,Award_Description) -}}
+
+
+
+    

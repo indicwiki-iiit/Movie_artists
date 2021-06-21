@@ -1,0 +1,43 @@
+{%- macro infobox(Image,Name, Name_in_native_language, Birthname, Alternate_Name, wiki_DOB,DOD,Actor_POB, Gender,Citizenship, wiki_occupation,
+Work_period_start,Work_period_end,Height,Star_Sign,Ethnic_group,wiki_spouse_name,Child_Name,Father_Name, Mother_Name,wiki_siblings,Relatives,Signature_image) -%}
+
+{{Infobox artist 
+| name             = {{Name}}
+| image            = [[File:{{{Image}}}]]
+| caption          = Image of {{Name}}
+| native_name      = {{}}
+| native_name_lang = {{Name_in_native_language}}
+| birth_name       = {{Birthname}}
+| birth_date       = {{wiki_DOB}}
+| birth_place      = 
+| baptised         = <!-- will not display if birth_date is entered -->
+| death_date       = <!-- {{Death date and age|YYYY|MM|DD|YYYY|MM|DD}} --> 
+| death_place      = 
+| resting_place    = 
+| resting_place_coordinates = <!-- {{Coord|LAT|LONG|type:landmark|display=inline}} -->
+| nationality      = 
+| education        = 
+| alma_mater       = 
+| known_for        = 
+| notable_works    = 
+| style            = 
+| movement         = 
+| spouse           = 
+| partner          = 
+| parents          = 
+| father           = 
+| mother           = 
+| relatives        = 
+| family           = 
+| awards           = <!-- {{awd|award|year|title|role|name}} (optional) -->
+| elected          = 
+| patrons          = 
+| memorials        = 
+| website          = <!-- {{URL|Example.com}} -->
+| module           = 
+}}
+
+{%- endmacro -%}
+
+{{- infobox(Image,Name, Name_in_native_language, Birthname, Alternate_Name, wiki_DOB,DOD,Actor_POB, Gender,Citizenship, wiki_occupation,
+Work_period_start,Work_period_end,Height,Star_Sign,Ethnic_group,wiki_spouse_name,Child_Name,Father_Name, Mother_Name,wiki_siblings,Relatives,Signature_image) -}}
