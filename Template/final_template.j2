@@ -1,0 +1,2110 @@
+{# category updated in descLine and used in ending  #}
+{%- macro infobox(IMDB_id,Image,Name, Name_in_native_languageinfo, Birthname, Alternate_Name, wiki_DOB,DOD,Actor_POB, Genderinfo,Citizenship, wiki_occupation,
+Work_period_start,twitterid,instaid,wiki_DOB_year,DOD_year,wiki_family_name,Work_period_end,Height,Star_Sign,Ethnic_group,wiki_spouse_name,Child_Name,Father_Name, Mother_Name,Wiki_commons_category,wiki_siblings,Relatives,Signature_image,careercsentence,lencareer,infoocup) -%}
+    {{'{{Infobox person'}}
+    {%- if Name is not float -%}
+    | name = {{Name}}
+    {% endif %}
+    {%- if Image is not float -%}                           
+    | image= [[File:{{Image}}|thumb|centre]]{{'\n'}} 
+    {% endif %}
+    {%- if Birthname is not float -%}
+    | 	birth_name= {{Birthname}}
+    {% endif %}
+    {%- if wiki_DOB != '1.0' -%}
+    | birth_date 	= {{wiki_DOB}}
+    {% endif %}
+    {%- if DOD != '1.0' -%}
+    | death_date	= {{DOD}}
+    {% endif %}
+    {%- if Actor_POB is not float -%}
+    | birth_place = {{Actor_POB}}
+    {% endif %}
+    {%- if Citizenship !='1.0' -%}
+    | citizenship	= {{Citizenship}}
+    {% endif %}
+    {%- if Alternate_Name is not float -%}
+    | other_names	= {{"{{"}}Plainlist |{{Alternate_Name |replace(",","\n*") }} {{"}}"}}
+    {% endif %}
+    {%- if careercsentence is not float and lencareer!=-1-%}
+    | occupation ={{"{{"}}Plainlist |{{infoocup |replace(",","\n*") }} {{"}}"}}
+
+    {% endif %}
+    {%- if Work_period_start is not float and Work_period_end is not float -%}
+    | years_active	= {{Work_period_start}} -- {{Work_period_end}}
+    {%- elif Work_period_start is not float and Work_period_end is float -%}
+    | years_active	= {{Work_period_start}} నుండి మొదలు
+    {% endif %}{{- '\n' -}}
+    {%- if Height is not float -%}
+    | height  = {{Height}}
+    {% endif %}
+    {%- if wiki_spouse_name is not float -%}
+    | spouse  = {{wiki_spouse_name}}
+    {% endif %}
+    {%- if Child_Name is not float -%}
+    | children  = {{Child_Name}}
+    {% endif %}
+    {%- if Father_Name is not float -%}
+    | father  = {{Father_Name}}
+    {% endif %}
+    {%- if Mother_Name is not float -%}
+    | mother  = {{Mother_Name}}
+    {% endif %}
+    {%- if Relatives is not float -%}
+    | relatives  = {{"{{"}}Plainlist |{{Relatives |replace(",","\n*") }} {{"}}"}}
+    {% endif %}
+    {%- if wiki_siblings is not float -%}
+    | family  = {{"{{"}}Plainlist |{{wiki_siblings |replace(",","\n*") }} {{"}}"}} (తోబుట్టువులు)
+    {% endif %}
+    {%- if Signature_image is not float -%}
+    | signature  = [[File:{{Signature_image}}|thumb|centre]]
+    {% endif %}
+{{'}}\n'}}
+{%- endmacro -%}
+{#intro for the actors#}
+{%- macro introduction(IMDB_id,Name,Nameeng,intro_filmo,lenintro,lennew,Gender,work_startyear,filmo_occupation,DOD,filmo_all_film_ocupations,debut_filmsip,latest_filmsip,present_date,lenl,lenn,lenf,lenalter,Citizenship,lenc,Native_language,Languages_spoken,Name_in_native_language,debut_filmsf,latest_filmsf,occup1_num,occup2_num,occup3_num,occup4_num,Knownfor,Knownforlength) -%}
+{# for female actors #}
+{%-if Gender=="female" or Gender=="transgender female"-%}
+    {%-if Name is not float and filmo_occupation is not float-%}
+       '''{{Name}}''' {{' '}} {{- '({}) '.format(Nameeng) -}}
+       {%- endif -%}
+{%- set line=[] -%}
+{%- for i in range(0,lenf) -%}
+    {%- if filmo_all_film_ocupations[i]=='' -%}
+        {% continue %}
+    {%- endif -%}
+    {%- set x=line.append(filmo_all_film_ocupations[i]+' గా') -%}    
+{%- endfor -%}
+{%- set line=line|join(', ') -%}
+{{line}}{{' '}}సినీరంగం లో పని చేసింది.
+
+    
+    
+
+{%- if Knownfor is not float and Knownforlength is not float-%}
+{%- set line=Name+' సినీరంగం లో' -%}{{line}}
+{%- for i in range(0,Knownforlength-1) -%}
+
+{%- if Knownfor[i][0]!='' and Knownfor[i][2]!='' -%}
+    {{' '}}{{Knownfor[i][0]}} సినిమా {{Knownfor[i][2]}} లో,{{''}} 
+    
+    {%- endif -%}
+{%- endfor -%}
+{{ ' ' }}{{Knownfor[Knownforlength-1][0]}} సినిమా {{Knownfor[Knownforlength-1][2]}} లో{{' '}}గుర్తింపు తెచ్చుకుంది.<ref name='info'>[https://www.imdb.com/name/{{IMDB_id}}/ {{Name}} ఐ ఎం డి బి ఐడి లింక్ ] </ref> 
+
+{%- endif -%}
+
+
+
+{# for male actors #}
+{%-else-%}
+{%-if Name is not float and filmo_all_film_occupations is not float -%}
+'''{{Name}}''' {{' '}} {{- '({}) '.format(Nameeng) -}} 
+{%- endif -%}
+    
+{%- set line=[] -%}
+{%- for i in range(0,lenf) -%}
+    {%- if filmo_all_film_ocupations[i]=='' -%}
+        {% continue %}
+    {%- endif -%}
+    {%- set x=line.append(filmo_all_film_ocupations[i]+' గా') -%}    
+{%- endfor -%}
+{%- set line=line|join(', ') -%}
+{{line}}{{' '}}సినీరంగం లో పని చేసాడు.{{' '}}
+    
+
+
+
+{%- if Knownfor is not float and Knownforlength is not float -%}
+{%- set line=Name+' సినీరంగం లో' -%}{{line}}
+ 
+{%- for i in range(0,Knownforlength-1) -%}
+
+
+{%- if Knownfor[i][0]!='' and Knownfor[i][2]!='' -%}
+    {{' '}}{{Knownfor[i][0]}} సినిమా {{Knownfor[i][2]}} లో,{{''}} 
+    {%- endif -%}
+    
+{%- endfor -%}
+{{ ' ' }}{{Knownfor[Knownforlength-1][0]}} సినిమా {{Knownfor[Knownforlength-1][2]}} లో{{' '}}గుర్తింపు తెచ్చుకున్నాడు.<ref name='info'>[https://www.imdb.com/name/{{IMDB_id}}/ {{Name}} ఐ ఎం డి బి ఐడి లింక్ ] </ref> 
+{%- endif -%}
+
+{{- '\n' -}}
+{%-endif-%}
+{%-endmacro-%}
+
+
+{%- macro career(IMDB_id,name,work_startyear,English_occup,wiki_data_id,length,Award_Outcome,Award_Now,Award_Non,Year_Of_The_Award,Award_Category,Award_Description,occup,occup1_num,occup2_num,occup3_num,occup4_num,debut_films,debut_filmseng,latest_films,latest_filmseng,Gender,occuplen,DOD,careercsentence,lencareer,Award_Categoryeng) -%}
+{{- '\n' -}}
+{{- "==కెరీర్==" -}}
+{{- '\n' -}}
+
+{# career female #}
+{%- if Gender=='female' or Gender=='transgender female' -%}
+
+{%-if work_startyear is not float-%}
+{{Name}}{{' '}} తన సినీ జీవితాన్ని{{' '}} 
+{%- for i in range(0,occuplen*1,3) -%}
+
+{{ debut_films[i]}} 
+{%- if i==0 -%}
+{%- break -%}
+{%- endif -%}
+{%- endfor -%}
+
+{%- set gap='సంవత్సరం లో ప్రారంభించింది. ' -%}{{gap}}
+{%-endif-%}
+
+{%-if occup1_num is not float and occup2_num is not float and occup3_num is not float and occup4_num is not float-%}
+{%-if DOD !='1.0'-%}
+{%-set lineonumf=occup1_num+occup2_num+occup3_num+occup4_num-%}{{' '}}{{Name}}{{' '}}{{DOD}} నాటికి {{lineonumf}} సినిమాలలో పని చేసింది.{{' '}}
+{%- else -%}
+{%-set lineonumf=occup1_num+occup2_num+occup3_num+occup4_num-%} {{Name}}{{' '}}2020 నాటికి {{lineonumf}} సినిమాలలో పని చేసింది.{{' '}}
+{%-endif-%} 
+{%-endif-%} 
+
+
+    {%- for i in range(0,occuplen*3,3) -%}
+        {%- if occup[i//3]=='సంగీత విభాగము' -%}
+            {%- set line1= [debut_films[i],' లో ',debut_films[i+1],' సినిమాతో ',occup[i//3],' గా అడుగు పెట్టింది'] |join('') -%}
+            {{line1}}
+        
+        {%- elif debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+            {%- set line1= ['', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా తెరంగేట్రం చేసింది'] |join('') -%}
+            {%- set line2= ['', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా ప్రజలకు పరిచయం అయింది']|join('') -%}
+            {%- set line3= ['', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా తొలి పరిచయం అయింది']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+
+        {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+          {%- set line1= [debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా తెరంగేట్రం చేసింది'] |join('') -%}
+          {{line1}}
+        {%-endif-%}
+        {% break %}
+    {%-endfor -%}
+
+    {%- if debut_films[1]!=latest_films[1]-%}
+    {%- if DOD=='1.0' and DOD is not float-%}    
+    , ఈమె ఇటివలి చిత్రం {{latest_films[1]}} ({{latest_filmseng[1]}})
+    {%- endif -%}{%- endif -%}
+
+.
+    {%- if  occuplen !=0 and occup[0] !='Self' and occup[0] !='Thanks' and occup1_num!=0 and careercsentence is not float and lencareer!=-1-%}
+    {%- if occup1_num!=1 -%}
+    {{' '}}తను ఇప్పటివరకు {{filmo_all_film_ocupations[0]}} గా {{occup1_num}} సినిమాలకు పని చేసింది.{{' '}}
+    {%- elif occup1_num==1 -%}
+    తను ఇప్పటివరకు {{filmo_all_film_ocupations[0]}} గా ఒక్క సినిమాకి పని చేసింది.{{' '}}
+     {%-endif-%}
+      {%-endif-%}
+
+      {%- if debut_films[1]!=latest_films[1]-%}
+      {%- if DOD!='1.0'  -%}
+        
+   
+      చివరిగా{{- ' ' -}}
+    
+            {%- if occup[0]=='సంగీత విభాగము'-%}
+                 {{latest_films[1]}} ({{latest_filmseng[1]}}) లో {{occup[0]}} తో  
+            {%- elif  latest_films[1] !='' and occup[0]!='Self' and occup[0]!='Thanks' and  occup[0]!='' -%}
+                 {{latest_films[1]}} ({{latest_filmseng[1]}}) లో {{occup[0]}} గా 
+            {%- endif -%}
+            {{- ' ' -}}ప్రజల ముందుకు వచ్చింది.{{' '}}
+        {%- endif -%}
+   
+   {%- endif -%}
+
+
+    {%- for i in range(3,occuplen*3,3) -%}
+    {%- if debut_films[i+1]!=latest_films[i+1]-%}
+    
+    
+    {# director #}
+   
+
+     {%- if English_occup[i//3]=='Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' దర్శకురాలి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి  దర్శకత్వం వహించింది. '] |join('') -%}
+     {%- set line2= [Name,' ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో దర్శకురాలి గా ప్రజలకు పరిచయం అయింది. ',]|join('') -%}
+     
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1= ['',Name,' దర్శకురాలి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ',debut_films[i],' సంవత్సరం లో దర్శకత్వం వహించింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' దర్శకురాలి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు దర్శకత్వం వహించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# Productiondesigner and production manager and cinematographer #}
+
+ 
+
+     {%- if English_occup[i//3]=='Productiondesigner' or  English_occup[i//3]=='Productionmanager' or English_occup[i//3]=='Cinematographer' -%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి పని చేసింది. '] |join('') -%}
+     
+     {%- set line3= ['ఈమె మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి ',occup[i//3],' గా పని చేసింది. ']|join('') -%}
+            {{ [ line1, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి లో పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+
+
+    {# second unit and assistant director #}
+
+   
+
+    {%- if English_occup[i//3]=='Second Unit Director or Assistant Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సహాయ దర్శకురాలి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించింది. '] |join('') -%}
+     {%- set line2= ['సహాయ దర్శకురాలి గా ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు దర్శకత్వం వహించింది. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1= ['',Name,' సహాయ దర్శకురాలి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు దర్శకత్వం వహించింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సహాయ దర్శకురాలి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {# writer #}
+  
+
+    {%- if English_occup[i//3]=='Writer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి కథ రాసారు. '] |join('') -%}
+
+     {%- set line3= [Name,' ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో కథా రచయిత గా పరిచయం అయింది. ']|join('') -%}
+            {{ [ line1, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['కథా రచయిత గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి కథ రాసారు. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line3= [Name,' ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో కథా రచయిత గా పరిచయం  అయింది. ']|join('') -%}
+    {{line3}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# script and continuity, art, visual effects , animations, art director #}
+ 
+
+    {%- if English_occup[i//3]=='Script and Continuity' or  English_occup[i//3]=='Art' or English_occup[i//3]=='Art director' or English_occup[i//3]=='Costume and Wardrobe' or English_occup[i//3]=='Costumedesigner' or English_occup[i//3]=='Set decorator' or English_occup[i//3]=='Animation' or English_occup[i//3]=='Special effects' or English_occup[i//3]=='Visual effects' or English_occup[i//3]=='Music' or English_occup[i//3]=='Soundtrack' or English_occup[i//3]=='Sound' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3] ,' గా పనిచేసింది. '] |join('') -%}
+            {{ line1 }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3] ,' గా పనిచేసింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3] ,' గా పనిచేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# producer #}
+  
+
+     {%- if English_occup[i//3]=='Producer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని నిర్మించింది. '] |join('') -%}
+     
+     {%- set line3= ['ఈమె నిర్మాతగా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాని నిర్మించింది. ']|join('') -%}
+            {{ [ line1, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['నిర్మాతగా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాని నిర్మించింది. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line3= ['ఈమె నిర్మాతగా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాను నిర్మించింది. ']|join('') -%}
+    {{line3}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# actor, actress and comedian #}
+
+
+    {%- if English_occup[i//3]=='Actor' or English_occup[i//3]=='Actress' or English_occup[i//3]=='transgender female' or English_occup[i//3]=='Comedian'  -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' చిత్రనికి ',debut_films[i],' సంవత్సరం లో  నటించింది. '] |join('') -%}
+     {%- set line2= ['నటి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు ',debut_films[i] ,' సంవత్సరం లో నటించింది. ']|join('') -%}
+     {%- set line3= ['ఈమె నటి గా ',debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు ',debut_films[i],' సంవత్సరం లో నటించింది. ']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రంలో నటించింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['నటి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],') ','సినిమాలో ' ,debut_films[i] ,' సంవత్సరం లో నటించింది. ']|join('') -%}
+    {{line2}}
+    {%-endif-%}{%-endif-%}
+
+{# composer #}
+
+
+    {%- if English_occup[i//3]=='Composer'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకురాలి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు ', debut_films[i],' సంవత్సరం లో సంగీతాన్ని అందించింది. '] |join('') -%}
+     {%- set line2= ['సంగీత దర్శకురాలి గా మొదటిసారి ',debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకి సంగీతాన్ని అందించింది. ']|join('') -%}
+     {%- set line3= ['ఈమె ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి గాను ', debut_films[i],' లో సంగీతాన్ని అందించింది. ']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకురాలి మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు సంగీతాన్ని అందించింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line3= ['ఈమె మొదటిసారి',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ', debut_films[i],' లో సంగీతాన్ని అందించింది. ']|join('') -%}
+    {{line3}}
+    {%-endif-%}{%-endif-%}
+
+{# casting and casting director #}
+
+
+    {%- if English_occup[i//3]=='Casting' or English_occup[i//3]=='Casting director'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1] ,' చిత్రానికి కాస్టింగ్ చెసారు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i+1],' (',debut_filmseng[i+1],')' ,' కాస్టింగ్ చెసారు. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' కాస్టింగ్ చెసారు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+{# editor and editorial #}
+
+
+    {%- if English_occup[i//3]=='Editor' or English_occup[i//3]=='Editorial' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1=['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. '] |join('') -%}   
+    {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. ']|join('') -%}
+            {{ [ line1, line2] | random  }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+    {%- if English_occup[i//3]=='Stunts' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1=['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసింది. '] |join('') -%}   
+    {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను స్టంట్ డైరెక్టర్ గా పని చేసింది. ']|join('') -%}
+            {{ [ line1, line2] | random  }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను స్టంట్ డైరెక్టర్ గా పని చేసింది. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+    {%- if English_occup[i//3]=='Makeup' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1=['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసింది. '] |join('') -%}   
+    {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను మేకప్ ఆర్టిస్ట్ గా పని చేసింది. ']|join('') -%}
+            {{ [ line1, line2] | random  }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను మేకప్ ఆర్టిస్ట్ గా పని చేసింది. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+
+    {%-else-%}
+
+
+    {%- if English_occup[i//3]=='Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' దర్శకురాలి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించింది. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి దర్శకత్వం వహించింది. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' దర్శకురాలి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Productionmanager' or English_occup[i//3]=='Productiondesigner' or English_occup[i//3]=='Cinematographer'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి పని చేసింది. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి ',occup[i//3],' గా పని చేసింది. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+
+    {%- if English_occup[i//3]=='Second Unit Director or Assistant Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' సహాయ దర్శకురాలి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించింది. '] |join('') -%}
+            {{line1}}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' సహాయ దర్శకురాలి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {%- if English_occup[i//3]=='Writer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి కథ రాసారు '] |join('') -%}
+     {%- set line2= ['ఈమె రచయిత్రి గా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో కథా రచయితగా పరిచయం అయింది. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని రచించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Script and Continuity' or  English_occup[i//3]=='Art' or English_occup[i//3]=='Art director' or English_occup[i//3]=='Costume and Wardrobe' or English_occup[i//3]=='Set decorator' or English_occup[i//3]=='Animation' or English_occup[i//3]=='Special effects' or English_occup[i//3]=='Visual effects' or English_occup[i//3]=='Music' or English_occup[i//3]=='Soundtrack' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ', occup[i//3],' గా పనిచేసింది. '] |join('') -%}
+            {{ line1 }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ', occup[i//3],' గా పనిచేసింది. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ', occup[i//3],' గా పనిచేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+
+    {%- if English_occup[i//3]=='Producer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని నిర్మించింది. '] |join('') -%}
+     {%- set line2= ['ఈమె నిర్మాతగా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాను నిర్మించింది. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని నిర్మించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {%- if English_occup[i//3]=='Actor' or English_occup[i//3]=='Actress' or English_occup[i//3]=='transgender female' or English_occup[i//3]=='Comedian' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' చిత్రనికి ' ,debut_films[i],' సంవత్సరం లో  నటించింది. '] |join('') -%}
+     {%- set line2= ['ఈమె నటి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' (',debut_films[i+1] ,')',' సినిమాలో నటించింది. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రంలో నటించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Composer'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకురాలిగా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు ', debut_films[i],' సంవత్సరం లో సంగీతాన్ని అందించింది. '] |join('') -%}
+     {%- set line2= ['సంగీత దర్శకురాలిగా మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకి ', debut_films[i],' లో సంగీతాన్ని అందించింది. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,'సంగీత దర్శకురాలిగా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు సంగీతాన్ని అందించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Casting' or English_occup[i//3]=='Casting director'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు కాస్టింగ్ చెసారు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {%- if English_occup[i//3]=='Editor' or English_occup[i//3]=='Editorial' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+    {%- if English_occup[i//3]=='Stunts' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసింది. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను స్టంట్ డైరెక్టర్ గా పని చేసింది. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+    {%- if English_occup[i//3]=='Makeup' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసింది. '] |join('') -%}
+     {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను మేకప్ ఆర్టిస్ట్ గా పని చేసింది. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసింది. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%-endif-%}
+    {%-endfor -%}
+    
+    {%- if  occuplen !=0 and occup[1] !='' and occup[1] !='' and occup[1] !='' and occup2_num!=0 and careercsentence is not float and lencareer!=-1-%}
+    తను ఇప్పటివరకు
+    {%- if occup[1] !='' and occup[1] !='' and occup[1] !='' and occup2_num!=0 and careercsentence[1]!=''-%}
+    {{' '}}{{filmo_all_film_ocupations[1]}} గా {{occup2_num}} {%- endif -%}
+    {%- if occup[2] !='' and occup[2] !='' and occup[2] !='' and occup3_num!=0 and careercsentence[2]!='' -%}
+    ,{{' '}}{{filmo_all_film_ocupations[2]}} గా {{occup3_num}}{%- endif -%}
+    {%- if occup[3] !=''and occup[3] !='' and occup[3] !='' and occup4_num!=0 and careercsentence[3]!='' -%}
+    ,{{' '}}{{filmo_all_film_ocupations[3]}} గా {{occup4_num}} {%- endif -%}
+    {{' '}}సినిమాలు చేసింది.{{' '}} {%- endif -%}
+    
+    {%- if Award_Now[0]=='1' and Award_Non[1]=='0' -%}
+    తన కెరీర్ లో ఒక్క పురస్కారం గెలుచుకుంది.{{' '}}
+    {%- elif  Award_Now[0]=='1' and Award_Non[1]=='1' -%}
+    తన కెరీర్ లో ఒక్క పురస్కారం గెలుచుకోగా, ఒక్క అవార్డుకు నామినేట్ అయ్యింది.{{' '}}
+    {%- elif Award_Now[0] =='0' and Award_Non[1]=='1' -%}
+    తన కెరీర్ లో ఒక్క అవార్డుకు నామినేట్ అయ్యింది.{{' '}}
+    {%- elif Award_Now[0]=='0' and Award_Non[1]!='0' and Award_Non[1]!='1' -%}
+    తన కెరీర్ లో {{Award_Non[1]}} అవార్డులకు నామినేట్ అయ్యింది.{{' '}}
+    {%- elif Award_Non[1]=='0' and Award_Now[0]!='1' and Award_Now[0]!='0' -%}
+    తన కెరీర్ లో {{Award_Now[0]}} పురస్కారాలు గెలుచుకుంది.{{' '}}
+    {%- elif Award_Non[1] is not float and Award_Now[0] is not float -%}
+    తన కెరీర్ లో వివిధ సినిమాలకి {{Award_Now[0]}} పురస్కారాలు గెలుచుకోగా, {{Award_Non[1]}} అవార్డులకు నామినేట్ అయ్యింది.{{' '}} 
+    {%- endif -%}
+
+
+
+    {%- for i in range(0,length) -%}
+    {%- if  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]!='' and Award_Description[i]!='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} కి  గాను {{Award_Description[i]}} అవార్డు పొందింది.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]=='' and Award_Category[i]!='' and Award_Description[i]!='' -%}
+    {{Award_Category[i]}} కి  గాను {{Award_Description[i]}} అవార్డు పొందింది.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]=='' and Award_Description[i]!='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Description[i]}} కి  గాను విజేతగా నిలిచింది.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]!='' and Award_Description[i]=='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} అవార్డు పొందింది.
+    {% break %}
+    {%- endif -%}
+    {%-endfor -%}
+   
+{%- endif -%}
+
+{# career male#}
+{%- if Gender=='male' -%}
+
+{%-if work_startyear is not float-%}
+{{Name}}{{' '}}తన సినీ జీవితాన్ని{{' '}} 
+{%- for i in range(0,occuplen*1,3) -%}
+
+{{ debut_films[i]}} 
+{%- if i==0 -%}
+{%- break -%}
+{%- endif -%}
+{%- endfor -%}
+
+{%- set gap=' సంవత్సరం లో ప్రారంభించాడు. ' -%}{{gap}}
+{%-endif-%}
+
+{%-if occup1_num is not float and occup2_num is not float and occup3_num is not float and occup4_num is not float-%}
+
+{%-if DOD !='1.0' -%}
+{%-set lineonumm=occup1_num+occup2_num+occup3_num+occup4_num-%}{{Name}}{{' '}}{{DOD}} నాటికి {{lineonumm}} సినిమాలలో పని చేశాడు.{{' '}}
+{%-else-%}
+{%-set lineonumm=occup1_num+occup2_num+occup3_num+occup4_num-%}{{Name}} 2020 నాటికి {{lineonumm}} సినిమాలలో పని చేశాడు.{{' '}}
+{%- endif -%}
+{%-endif-%}
+
+
+    {%- for i in range(0,occuplen*3,3) -%}
+        {%- if occup[i//3]==' సంగీత విభాగము' and debut_films[i] !='' and debut_films[i+1] !=''  -%}
+            {%- set line1= ['',debut_films[i],' లో ',debut_films[i+1],' సినిమాతో ',occup[i//3],' గా అడుగు పెట్టాడు'] |join('') -%}
+            {{line1}}
+
+        
+        
+        {%- elif debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}
+            {%- set line1= ['',debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా తెరంగేట్రం చేశాడు'] |join('') -%}
+            {%- set line2= ['',debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా ప్రజలకు పరిచయం అయ్యాడు']|join('') -%}
+            {%- set line3= ['',debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో ',occup[i//3],' గా తొలి పరిచయం అయ్యాడు']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+
+         {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and occup[i//3]!='Thanks' -%}సినిమాతో
+          {%- set line1= ['',debut_films[i+1], ' (',debut_filmseng[i+1],')' , ' సినిమాతో ',occup[i//3],' గా తెరంగేట్రం చేశాడు'] |join('') -%}
+          {{line1}}
+        {%-endif-%}
+        {% break %}
+    {%-endfor -%}
+
+     {%- if debut_films[1]!=latest_films[1]-%}
+    {%- if DOD=='1.0' and DOD is not float-%}    
+    , అతని ఇటివలి చిత్రం {{latest_films[1]}} ({{latest_filmseng[1]}})
+    {%- endif -%}
+    {%- endif -%}
+
+.
+    {%- if  occuplen !=0 and occup[0] !='Self' and occup[0] !='Thanks' and occup1_num!=0 and careercsentence is not float and lencareer!=-1 -%}
+    {%- if occup1_num!=1 -%}
+    {{' '}}తను ఇప్పటివరకు {{filmo_all_film_ocupations[0]}} గా {{occup1_num}} సినిమాలకు పని చేశాడు.{{' '}}
+    {%- elif occup1_num==1 -%}
+    {{' ' }}తను ఇప్పటివరకు {{filmo_all_film_ocupations[0]}} గా ఒక్క సినిమాకి పని చేశాడు.{{' '}}
+     {%-endif-%}
+      {%-endif-%}
+
+    {%- if debut_films[1]!=latest_films[1]-%}
+      {%- if DOD!='1.0'  -%}
+  
+  
+      చివరిగా{{- ' ' -}}
+    
+            {%- if occup[0]=='సంగీత విభాగము'-%}
+                 {{latest_films[1]}} ({{latest_filmseng[1]}}) లో {{occup[0]}} తో  
+            {%- elif  latest_films[1] !='' and occup[0]!='Self' and occup[0]!='Thanks' and  occup[0]!='' -%}
+                 {{latest_films[1]}} ({{latest_filmseng[1]}}) లో {{occup[0]}} గా 
+            {%- endif -%}
+            {{- ' ' -}}ప్రజల ముందుకు వచ్చాడు.{{' '}}
+            {%- endif -%}
+            
+            {%- endif -%}
+        
+        
+        
+
+    {%- for i in range(3,occuplen*3,3) -%}
+    {%- if debut_films[i+1]!=latest_films[i+1]-%}
+    {# director #}
+  
+
+
+     {%- if English_occup[i//3]=='Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+     
+     {%- set line2= [Name,' ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో దర్శకుడి గా ప్రజలకు పరిచయం అయ్యాడు. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1= ['',Name,' దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు దర్శకత్వం వహించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# Productiondesigner and production manager and cinematographer #}
+
+
+     {%- if English_occup[i//3]=='Productiondesigner' or  English_occup[i//3]=='Productionmanager' or English_occup[i//3]=='Cinematographer' -%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు పని చేసాడు. '] |join('') -%}
+    
+     {%- set line3= ['ఇతడు మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి ',occup[i//3],' గా పని చేసాడు.']|join('') -%}
+            {{ [ line1, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి పని చేసాడు. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు పని చేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+
+
+    {# second unit director and assistant director #}
+
+
+    {%- if English_occup[i//3]=='Second Unit Director or Assistant Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సహాయ దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు సహాయ దర్శకుడి గా ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు దర్శకత్వం వహించాడు. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1= ['',Name,' సహాయ దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు దర్శకత్వం వహించాడు. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సహాయ దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# writer #}
+
+
+    {%- if English_occup[i//3]=='Writer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి కథ రాసారు. '] |join('') -%}
+  
+     {%- set line3= [Name,' ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో కథా రచయిత గా పరిచయం అయ్యాడు. ']|join('') -%}
+            {{ [ line1, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['కథా రచయిత గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి కథ రాసారు. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line3= [Name,' ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో కథా రచయిత గా పరిచయం అయ్యాడు. ']|join('') -%}
+    {{line3}}
+    {%-endif-%}{%-endif-%}
+
+
+
+{# script continuity, art, costume and wardobe, art director, set director,visual effects, animation,  #}
+
+
+{%- if English_occup[i//3]=='Script and Continuity' or  English_occup[i//3]=='Art' or English_occup[i//3]=='Art director' or English_occup[i//3]=='Costume and Wardrobe' or English_occup[i//3]=='Costumedesigner' or English_occup[i//3]=='Set decorator' or English_occup[i//3]=='Animation' or English_occup[i//3]=='Special effects' or English_occup[i//3]=='Visual effects' or English_occup[i//3]=='Music' or English_occup[i//3]=='Soundtrack' or English_occup[i//3]=='Sound' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3],' గా పనిచేసాడు. '] |join('') -%}
+            {{ line1 }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3],' గా పనిచేసాడు. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3],' గా పనిచేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {# producer #}
+
+
+     {%- if English_occup[i//3]=='Producer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని నిర్మించాడు. '] |join('') -%}
+     
+     {%- set line3= ['ఇతడు నిర్మాతగా మొదటిసారి',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాను నిర్మించాడు. ']|join('') -%}
+            {{ [ line1, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['నిర్మాతగా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాని నిర్మించాడు. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line3= ['ఇతడు నిర్మాతగా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాను నిర్మించాడు. ']|join('') -%}
+    {{line3}}
+    {%-endif-%}{%-endif-%}
+
+
+    {# actor actress and comedian#}
+
+
+    {%- if English_occup[i//3]=='Actor' or English_occup[i//3]=='Actress' or English_occup[i//3]=='transgender female' or English_occup[i//3]=='Comedian'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],') ','చిత్రనికి ' ,debut_films[i],' సంవత్సరం లో నటించాడు. '] |join('') -%}
+     {%- set line2= ['నటుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],') ','సినిమాలో ' ,debut_films[i] ,' సంవత్సరం లో నటించాడు. ']|join('') -%}
+     {%- set line3= ['ఇతడు నటుడి గా ',debut_films[i+1], ' (',debut_filmseng[i+1],') ','సినిమాలో ' ,debut_films[i],' సంవత్సరం లో నటించాడు. ']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రంలో నటించాడు. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['నటుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],') ' ,debut_films[i] ,' సినిమాలో నటించాడు. ']|join('') -%}
+    {{line2}}
+    {%-endif-%}{%-endif-%}
+
+    {# composer #}
+
+
+    {%- if English_occup[i//3]=='Composer'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు ', debut_films[i],' సంవత్సరం లో సంగీతాన్ని అందించాడు. '] |join('') -%}
+     {%- set line2= ['సంగీత దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు సంగీతాన్ని అందించాడు. ']|join('') -%}
+     {%- set line3= ['ఇతడు ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ', debut_films[i],' లో సంగీతాన్ని అందించాడు. ']|join('') -%}
+            {{ [ line1, line2, line3 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు సంగీతాన్ని అందించాడు. '] |join('') -%}
+    {{line1}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line3= ['ఇతడు ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ', debut_films[i],' లో సంగీతాన్ని అందించాడు. ']|join('') -%}
+    {{line3}}
+    {%-endif-%}{%-endif-%}
+
+{# casting and casting director #}
+
+
+    {%- if English_occup[i//3]=='Casting' or English_occup[i//3]=='Casting director'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు. '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి కాస్టింగ్ చెసారు ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఇతడు మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి కాస్టింగ్ చెసారు  ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {# editor or editorial #}
+
+
+    {%- if English_occup[i//3]=='Editor' or English_occup[i//3]=='Editorial' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1=['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. '] |join('') -%}   
+    {%- set line2= ['ఇతడు మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. ']|join('') -%}
+            {{ [ line1, line2] | random  }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఇతడు మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+        {%- if English_occup[i//3]=='Stunts' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1=['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసాడు. '] |join('') -%}   
+    {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను స్టంట్ డైరెక్టర్ గా పని చేసాడు. ']|join('') -%}
+            {{ [ line1, line2] | random  }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను స్టంట్ డైరెక్టర్ గా పని చేసాడు. ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+    {%- if English_occup[i//3]=='Makeup' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+    {%- set line1=['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')',' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసాడు. '] |join('') -%}   
+    {%- set line2= ['ఈమె మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను మేకప్ ఆర్టిస్ట్ గా పని చేసాడు. ']|join('') -%}
+            {{ [ line1, line2] | random  }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line2= ['ఈమె మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను మేకప్ ఆర్టిస్ట్ గా పని చేసాడు.  ']|join('') -%}
+    {{line2}}
+    {%- elif debut_films[i]!='' and debut_films[i+1]!='' and occup[i//3]!='' and latest_films[i]=='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {%-else-%}
+
+
+
+
+    {%- if English_occup[i//3]=='Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి దర్శకత్వం వహించాడు. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Productionmanager' or English_occup[i//3]=='Productiondesigner' or English_occup[i//3]=='Cinematographer'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి పని చేసాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రానికి ',occup[i//3],' గా పని చేసాడు. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' ',occup[i//3],' గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి పని చేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+
+
+    {%- if English_occup[i//3]=='Second Unit Director or Assistant Director'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' సహాయ దర్శకుడి గా మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+            {{ line1 }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' సహాయ దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి దర్శకత్వం వహించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Writer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''  -%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి కథ రాసారు. '] |join('') -%}
+     {%- set line2= ['ఇతడు రచయిత గా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాతో కథా రచయితగా పరిచయం అయ్యాడు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని రచించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Script and Continuity' or  English_occup[i//3]=='Art' or English_occup[i//3]=='Costume and Wardrobe' or English_occup[i//3]=='Art director' or English_occup[i//3]=='Set decorator' or English_occup[i//3]=='Animation' or English_occup[i//3]=='Special effects' or English_occup[i//3]=='Visual effects' or English_occup[i//3]=='Music' or English_occup[i//3]=='Soundtrack' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3],' గా పనిచేసాడు. '] |join('') -%}
+            {{ line1 }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకి ',occup[i//3],' గా పనిచేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Producer'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని నిర్మించాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు నిర్మాతగా మొదటిసారి ',debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాను నిర్మించాడు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రాన్ని నిర్మించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+    {%- if English_occup[i//3]=='Actor' or English_occup[i//3]=='Actress' or English_occup[i//3]=='transgender female' or English_occup[i//3]=='Comedian'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!='' -%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' (',debut_films[i],')',' చిత్రంలో నటించాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు నటుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' (',debut_films[i] ,')',' సినిమాలో నటించాడు.' ]|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' చిత్రంలో నటించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Composer'-%}
+     {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు ', debut_films[i],' సంవత్సరం లో సంగీతాన్ని అందించాడు. '] |join('') -%}
+     {%- set line2= ['సంగీత దర్శకుడి గా మొదటిసారి ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకి ', debut_films[i],' లో సంగీతాన్ని అందించాడు. ']|join('') -%}
+            {{ [ line1, line2 ] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' సంగీత దర్శకుడి గా మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు సంగీతాన్ని అందించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Casting' or English_occup[i//3]=='Casting director'-%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు. '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' సినిమాకు కాస్టింగ్ చెసారు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు కాస్టింగ్ చెసారు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- if English_occup[i//3]=='Editor' or English_occup[i//3]=='Editorial' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు ఎడిటర్ గా బాధ్యతను నిర్వత్తించాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+    {%- if English_occup[i//3]=='Stunts' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసాడు. '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను స్టంట్ డైరెక్టర్ గా పని చేసాడు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు స్టంట్ డైరెక్టర్ గా పని చేసాడు. '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+    {%- if English_occup[i//3]=='Makeup' -%}
+    {%if debut_films[i] !='' and debut_films[i+1] !='' and occup[i//3]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i],' లో ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసాడు.  '] |join('') -%}
+     {%- set line2= ['ఇతడు మొదటిసారి ', debut_films[i],' లో ',debut_films[i+1], ' (',debut_filmseng[i+1],')'  ,' చిత్రానికి గాను మేకప్ ఆర్టిస్ట్ గా పని చేసాడు. ']|join('') -%}
+            {{ [ line1, line2] | random }}
+    {%- elif debut_films[i] =='' and debut_films[i+1] !='' and occup[i//3]!='' and latest_films[i]!='' and latest_films[i+1]!=''-%}
+     {%- set line1= ['',Name,' మొదటిసారి ', debut_films[i+1], ' (',debut_filmseng[i+1],')' ,' సినిమాకు మేకప్ ఆర్టిస్ట్ గా పని చేసాడు.  '] |join('') -%}
+    {{line1}}
+    {%-endif-%}{%-endif-%}
+
+
+    {%- endif -%}
+    {%-endfor -%}
+
+    {%- if occup1 is not float -%}
+    {%- if  occuplen !=0 and occup[1] !='' and occup[1] !='' and occup[1] !='' and occup1_num!=0 and careercsentence is not float and lencareer!=-1-%}
+    తను ఇప్పటివరకు
+    {%- if occup[1] !='' and occup[1] !='' and occup[1] !='' and occup2_num!=0  and careercsentence[1]!=''-%}    
+    {{' '}}{{filmo_all_film_ocupations[1]}} గా {{occup2_num}} {%- endif -%}
+    {%- if occup[2] !=''and occup[2] !='' and occup[2] !='' and occup3_num!=0  and careercsentence[2]!=''-%}
+    ,{{' '}}{{filmo_all_film_ocupations[2]}} గా {{occup3_num}}{%- endif -%}
+    {%- if occup[3] !='' and occup[3] !='' and occup[3] !='' and occup4_num!=0 and careercsentence[3]!='' -%}
+    ,{{' '}}{{filmo_all_film_ocupations[3]}} గా {{occup4_num}} {%- endif -%} 
+    {{- ' ' -}}సినిమాలు చేసాడు.{{-' '-}} {%- endif -%} {%- endif -%}
+
+
+    {%- if Award_Now[0]=='1' and Award_Non[1]=='0' -%}
+    తన కెరీర్ లో ఒక్క పురస్కారం గెలుచుకున్నాడు.{{' '}}
+    {%- elif  Award_Now[0]=='1' and Award_Non[1]=='1' -%}
+    తన కెరీర్ లో ఒక్క పురస్కారం గెలుచుకోగా, ఒక్క అవార్డుకు నామినేట్ అయ్యాడు.{{' '}}
+    {%- elif Award_Now[0] =='0' and Award_Non[1]=='1' -%}
+    తన కెరీర్ లో ఒక్క అవార్డుకు నామినేట్ అయ్యాడు.{{' '}}
+    {%- elif Award_Now[0]=='0' and Award_Non[1]!='0' and Award_Non[1]!='1' -%}
+    తన కెరీర్ లో {{Award_Non[1]}} అవార్డులకు నామినేట్ అయ్యాడు.{{' '}}
+    {%- elif Award_Non[1]=='0' and Award_Now[0]!='1' and Award_Now[0]!='0'-%}
+    తన కెరీర్ లో {{Award_Now[0]}} పురస్కారాలు గెలుచుకున్నాడు.{{' '}}
+    {%- elif Award_Non[1] is not float and Award_Now[0] is not float -%}
+    తన కెరీర్ లో వివిధ సినిమాలకి {{Award_Now[0]}} పురస్కారాలు గెలుచుకోగా, {{Award_Non[1]}} అవార్డులకు నామినేట్ అయ్యాడు.{{' '}} 
+    {%- endif -%}
+
+    {%- for i in range(0,length) -%}
+    {%- if Award_Categoryeng[i]=='Nandi Award' or Award_Categoryeng[i]=='Dada Saheb Phalke Award' or Award_Categoryeng[i]=='National Film Award' or Award_Categoryeng[i]=='Oscar' -%}
+    {%- if  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]!='' and Award_Description[i]!='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} కి  గాను {{Award_Description[i]}} అవార్డు పొందాడు.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]=='' and Award_Category[i]!='' and Award_Description[i]!='' -%}
+    {{Award_Category[i]}} కి  గాను {{Award_Description[i]}} అవార్డు పొందాడు.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]=='' and Award_Description[i]!='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Description[i]}} కి గాను విజేతగా నిలిచాడు.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]!='' and Award_Description[i]=='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} అవార్డు పొందాడు.
+    {% break %}
+    {%- endif -%}
+    
+{%- else -%}
+
+    
+    
+    {%- if  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]!='' and Award_Description[i]!='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} కి  గాను {{Award_Description[i]}} అవార్డు పొందాడు.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]=='' and Award_Category[i]!='' and Award_Description[i]!='' -%}
+    {{Award_Category[i]}} కి  గాను {{Award_Description[i]}} అవార్డు పొందాడు.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]=='' and Award_Description[i]!='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Description[i]}} కి గాను విజేతగా నిలిచాడు.
+    {% break %}
+    {%- elif  Award_Outcome[i]=='Winner' and Year_Of_The_Award[i]!='' and Award_Category[i]!='' and Award_Description[i]=='' -%}
+    {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} అవార్డు పొందాడు.
+    {% break %}
+    {%- endif -%}
+    {%- endif -%}
+    {%-endfor -%}
+{%- endif -%}
+
+{%- endmacro -%}
+
+
+
+{# personal life of the actor #}
+
+{%- macro personal_life(IMDB_id,wiki_data_id,Name,Gender,wiki_DOB,Actor_POB,Birthname,Alternate_Name,lensib,lenrela,Father_Name,Mother_Name,wiki_siblings,wiki_family_name,Relatives,wiki_spouse_namef,wiki_spouse_name,Child_Name,DOD) -%}
+{{- '\n' -}}
+{{- "==వ్యక్తిగత జీవితం==" -}}
+{{- '\n' -}}
+
+{# for female artists #}
+
+{%-if Gender=="female" or Gender=="transgender female"-%}
+{%-if Name is not float and wiki_DOB!='1.0' and Actor_POB is not float-%}
+{%-set linepf=[Name+' '+wiki_DOB+' తేదీన '+Actor_POB+' లో జన్మించింది. ',
+                Name+' జన్మ స్థలం '+Actor_POB+ ', ఆమె '+wiki_DOB+ ' న జన్మించింది. ']|random
+-%}{{linepf}}
+
+{%-elif Name is not float and wiki_DOB!='1.0' and Actor_POB is float-%}
+{%-set linepdobf=Name+' '+wiki_DOB+' తేదీన జన్మించింది. '-%}{{linepdobf}}
+
+{%-elif Name is not float and wiki_DOB!='1.0' and Actor_POB is not float-%}
+{%-set linepplacef=[Name+' '+Actor_POB+' లో జన్మించింది. ',
+              Name+' జన్మ స్థలం '+Actor_POB+ '. ']|random  
+-%}{{linepplacef}}
+{%-endif-%}
+
+
+{%-if Languages_spoken is not float-%}
+{%-if lenl is not float and lenl==1 -%}
+{%-set linelangf1=Name+' '+Languages_spoken+ ' భాష మాట్లాడగలదు. '-%}{{linelangf1}}
+{%-else-%}
+{%-set linelangf=Name+' '+Languages_spoken+ ' భాషలు మాట్లాడగలదు. '-%}{{linelangf}}{%-endif-%}
+{%-endif-%}
+
+{%-if Citizenship!='1.0'-%}
+{%- if lenc is not float and lenc==1 -%}
+{%-set linecityf1='ఈమెకు ' +Citizenship+' పౌరసత్వం కలదు. '-%}{{linecityf1}}
+{%- else -%}
+{%-set linecityf=[  'ఈమెకు ' +Citizenship+ ' లాంటి వివిధ దేశాలలో పౌరసత్వం కలదు. ',
+                    Citizenship+'లాంటి వివిధ దేశాలలో ను పౌరసత్వం కలదు. '
+                    ]|random
+-%}
+{%-endif-%}{{linecityf}}
+{%-endif-%}
+
+{%-if Birthname is not float and Name is not float-%}
+{%-set linebf=['ఈమె అసలు పేరు '+Birthname+'. ',
+               Name+ ' అసలు పేరు ' +Birthname+'. ']|random
+-%}{%-endif-%}{{linebf}}
+
+{%-if Alternate_Name is not float and Name is not float-%}
+{%-if lenalter is not float and lenalter==1-%}
+{%-set lineaf1=Name+' ని '+Alternate_Name+' అనే పేరుతో కూడా పిలుస్తారు. '-%}{{lineaf1}}
+{%-else-%}
+{%-set lineaf=Name+' ని '+Alternate_Name+' అనే పేర్లతో కూడా పిలుస్తారు. '-%}
+{{lineaf}}{%-endif-%}
+{%-endif-%}
+
+{%-if wiki_family_name is not float-%}
+{%-set lineff='ఈమె ఇంటి పేరు '+wiki_family_name + '. '-%}{%-endif-%}{{lineff}}
+
+{%-if Father_Name is not float and Mother_Name is not float-%}
+{%-set linepaf='ఈమె తల్లిదండ్రులు '+Father_Name+', '+Mother_Name+'. '-%}{{linepaf}}
+
+{%-elif Father_Name is not float and Mother_Name is float-%}
+{%-set linepdadf='ఈమె తండ్రి పేరు '+Father_Name+'. '-%}{{linepdadf}}
+
+{%-elif Father_Name is float and Mother_Name is not float-%}
+{%-set linepmomf='ఈమె తల్లి పేరు '+Mother_Name+'. '-%}{{linepmomf}}{%-endif-%}
+
+
+{%-if wiki_siblings is not float and lensib is not float-%}
+{%-if lensib==1-%}
+{%-set lines1f=wiki_siblings+' ఈమె తోబుట్టువు. '-%}{{lines1f}}
+{%else%}
+{%-set linesf=wiki_siblings+' ఈమె తోబుట్టువులు. '-%}{%-endif-%}{{linesf}}{%-endif-%}
+{%-if Name is not float and wiki_spouse_name is not float-%}
+{%-set linespouf=Name+' జీవిత భాగస్వామి '+wiki_spouse_namef+'. '-%}{{linespouf}}{%-endif-%}
+{%-if Child_Name is not float-%}
+{%-set linecf='ఆమె సంతానం '+Child_Name+'. '-%}{%-endif-%}{{linecf}}
+{%-if Relatives is not float and lenrela is not float-%}
+{%-if lenrela==1-%}
+{%-set liner1f='చిత్ర పరిశ్రమలో ఈమె బంధువు '+Relatives+'. '-%}{{liner1f}}
+{%-else-%}
+{%-set linerf='చిత్ర పరిశ్రమలో ఈమె బంధువులు '+Relatives+'. '-%}{%-endif-%}{{linerf}}{%-endif-%}
+{%-if DOD!='1.0'-%}
+{%-set linedf=DOD+' తేదీన మరణించింది. '-%}{%-endif-%}{{linedf}}<ref name='info1'>[https://www.wikidata.org/wiki/{{wiki_data_id}} {{Name}} విక్కీ ఐడి లింక్]  </ref>
+{# for male artists #}
+{%-else-%}
+{%-if Name is not float and wiki_DOB!='1.0' and Actor_POB is not float-%}
+{%-set linepm=[Name+' '+wiki_DOB+' తేదీన '+Actor_POB+' లో జన్మించాడు. ',
+              Name+' జన్మ స్థలం '+Actor_POB+ ', అతడు '+wiki_DOB+ ' న జన్మించాడు. ']|random  
+-%}{{linepm}}
+
+{%-elif Name is not float and wiki_DOB!='1.0' and Actor_POB is float-%}
+{%-set linepdobm=Name+' '+wiki_DOB+' తేదీన జన్మించాడు. '-%}{{linepdobm}}
+
+{%-elif Name is not float and wiki_DOB!='1.0' and Actor_POB is not float-%}
+{%-set linepplacem=[Name+' '+Actor_POB+' లో జన్మించాడు. ',
+              Name+' జన్మ స్థలం '+Actor_POB+ '. ']|random  
+-%}{{linepplacem}}{%-endif-%}
+
+{%-if Languages_spoken is not float-%}
+{%-if lenl is not float and lenl==1-%}
+{%-set linelangm1=Name+' '+Languages_spoken+ ' భాష మాట్లాడగలడు. '-%}{{linelangm1}}
+{%-else-%}
+{%-set linelangm=Name+' '+Languages_spoken+ ' భాషలు మాట్లాడగలడు. '-%}{{linelangm}}{%-endif-%}
+{%-endif-%}
+
+{%-if Citizenship!='1.0'-%}
+{%- if lenc is not float and lenc==1 -%}
+{%-set linecitym1='ఇతడికి ' +Citizenship+ ' పౌరసత్వం కలదు. '-%}{{linecitym1}}
+{%- else -%}
+{%-set linecitym=[  'ఇతడికి ' +Citizenship+ ' లాంటి వివిధ దేశాలలో పౌరసత్వం కలదు. ',
+                    Citizenship+' లాంటి వివిధ దేశాలలో పౌరసత్వం కలదు. '
+                    ]|random
+-%}
+{%-endif-%}{{linecitym}}
+{%- endif -%}
+
+
+{%-if Birthname is not float and Name is not float-%}
+{%-set linebm=['ఇతడి అసలు పేరు '+Birthname+ '. ',
+                Name+ ' అసలు పేరు ' +Birthname+'. ']|random
+-%}{%-endif-%}{{linebm}}
+
+{%-if Alternate_Name is not float and Name is not float-%}
+{%-if lenalter is not float and lenalter==1-%}
+{%-set lineam1=Name+' ని '+Alternate_Name+' అనే పేరుతో కూడా పిలుస్తారు. '-%}{{lineam1}}
+{%-else-%}
+{%-set lineam=Name+' ని '+Alternate_Name+' అనే పేర్లతో కూడా పిలుస్తారు. '-%}
+{{lineam}}{%-endif-%}
+{%-endif-%}
+
+{%-if wiki_family_name is not float and Name is not float-%}
+{%-set linefm='ఇతడి ఇంటి పేరు '+wiki_family_name+ '. '-%}{%-endif-%}{{linefm}}
+
+{%-if Father_Name is not float and Mother_Name is not float-%}
+{%-set linepam='ఇతడి తల్లిదండ్రులు '+Father_Name+', '+Mother_Name+'. '-%}{{linepam}}
+
+{%-elif Father_Name is not float and Mother_Name is float-%}
+{%-set linepdadm='ఇతడి తండ్రి పేరు '+Father_Name+'. '-%}{{linepdadm}}
+
+{%-elif Father_Name is float and Mother_Name is not float-%}
+{%-set linepmomm='ఇతడి తల్లి పేరు '+Mother_Name+'. '-%}{{linepmomm}}{%-endif-%}
+
+
+
+{%-if wiki_siblings is not float and lensib is not float-%}
+{%-if lensib==1-%}
+{%-set lines1m=wiki_siblings+' ఇతడి తోబుట్టువు. '-%}{{lines1m}}
+{%else%}
+{%-set linesm=wiki_siblings+' ఇతడి తోబుట్టువులు. '-%}{{linesm}}{%-endif-%}{%-endif-%}
+
+{%-if Name is not float and wiki_spouse_name is not float-%}
+{%-set linespousm=Name+' జీవిత భాగస్వామి '+wiki_spouse_namef+'. '-%}{{linespousm}}{%-endif-%}
+{%-if Child_Name is not float-%}
+{%-set linecm='అతని సంతానం '+Child_Name+ '. '-%}{%-endif-%}{{linecm}}
+
+{%-if Relatives is not float and lenrela is not float-%}
+{%-if lenrela==1-%}
+{%-set liner1m='చిత్ర పరిశ్రమలో ఇతడి బంధువు '+Relatives+'. '-%}{{liner1m}}
+{%-else-%}
+{%-set linerm='చిత్ర పరిశ్రమలో ఇతడి బంధువులు '+Relatives+'. '-%}{%-endif-%}{{linerm}}{%-endif-%}
+
+{%-if DOD!='1.0'-%}
+{%-set linedm=DOD+' తేదీన మరణించాడు. '-%}{%-endif-%}{{linedm}}<ref name='info1'>[https://www.wikidata.org/wiki/{{wiki_data_id}} {{Name}} విక్కీ ఐడి లింక్]  </ref>
+{%-endif-%}
+{%-endmacro-%}
+
+
+{# filmo #}
+   {#- name, occupations, count, movie_name, film_year, movieid  -#}
+   {%- macro filmo(IMDB_id,Name,filmo_occupationfilmo,filmo_all_film_ocupations_filmo,latest_films_filmo,occup1_num,occup1_films,occup2_num,occup2_films,occup3_num,occup3_films,occup4_num,occup4_films,occup1_filmseng,occup2_filmseng,occup3_filmseng,occup4_filmseng,debut_films_filmo,English_occup,careercsentence,occup) -%}
+    {{- '' -}}
+    {{'\n'}}
+    {{- "==ఫిల్మోగ్రఫీ==" -}}
+    
+       
+        {{- '\n' -}}
+        {%- if Gender == 'female' or Gender=='transgender female' -%}
+            {%- if filmo_all_film_ocupations_filmo[0]=='' -%}
+            
+            {%- else -%}
+            
+                {{- '\n' -}}
+                
+                {%- if occup1_num>=15 -%}
+                
+                    {%- if filmo_all_film_ocupations_filmo[0] != float and sam is not float and filmo_all_film_ocupations[0] !='' and careercsentence[0]!=''  -%}
+                    
+                    ===={{careercsentence[0]}}===={{- '\n' -}} 
+                   
+                       
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[0] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[0]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}<ref name='filmo'>[https://www.imdb.com/name/{{IMDB_id}}/?nmdp=1&ref_=nm_ql_4#filmography {{Name}} ఫిల్మోగ్రఫీ లింక్] </ref>
+                        
+                        {{- '\n' -}}
+                            <div style="overflow-x: scroll;height : 40em;">
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for j in range(0,sam) -%}
+                                        
+                                        {%- if occup1_films[j][0]!='' -%}
+                                            {%- set occup1=occup1_films[j][0] -%}
+                                        {%- else -%}
+                                            {% set occup1='-' %}
+                                        {%- endif -%}
+                                        
+                                        
+                                        |-
+                                        | {{occup1}} || {{occup1_films[j][1]}}{{' ('}}{{occup1_filmseng[j][1]}}{{')'}} || [https://www.imdb.com/title/{{occup1_films[j][2]}}/ {{occup1_films[j][1]}} ]
+                                        {{'\n'}}
+                                        
+                                        {%- endfor -%}
+
+                                        |}</div>{{- '\n' -}}
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if filmo_all_film_ocupations_filmo[0] != float and filmo_all_film_ocupations[0] !='' and careercsentence[0]!='' -%}
+                        
+                        ===={{careercsentence[0]}}===={{- '\n' -}}
+                       
+                            
+                            
+                           
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations_filmo[0] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[0]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}<ref name='filmo'>[https://www.imdb.com/name/{{IMDB_id}}/?nmdp=1&ref_=nm_ql_4#filmography {{Name}} ఫిల్మోగ్రఫీ లింక్]</ref>
+                        
+                            {{- '\n' -}}
+                                
+                                    {| class = "wikitable"
+                                        |-
+                                        ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                        |-
+                                        {%- for j in range(0,sam) -%}
+                                            {%- if occup1_films[j][0]!='' -%}
+                                                {%- set occup1=occup1_films[j][0] -%}
+                                            {%- else -%}
+                                                {% set occup1='-' %}
+                                            {%- endif -%}
+                                            |-
+                                            | {{occup1}} || {{occup1_films[j][1]}}{{' ('}}{{occup1_filmseng[j][1]}}{{')'}} || [https://www.imdb.com/title/{{occup1_films[j][2]}}/ {{occup1_films[j][1]}} ]
+                                            {{'\n'}}
+                                            
+                                            {%- endfor -%}
+
+                                            |}{{- '\n' -}}
+                            {%- endif -%}
+                {%- endif -%}
+            {%- endif -%}
+
+            
+
+            {%- if filmo_all_film_ocupations_filmo[1]=='' -%}
+            
+            {%- else -%}
+            
+            {{- '\n' -}}
+            {%- if occup2_num>=15 -%}
+                    {%- if filmo_all_film_ocupations_filmo[1] != float and san is not float and filmo_all_film_ocupations[1] !='' and careercsentence[1]!='' -%}
+                    
+                    ===={{careercsentence[1]}}===={{-'\n'-}}
+                        
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[1] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[1]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                        {{- '\n' -}}
+                            <div style="overflow-x: scroll;height : 40em;">
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for k in range(0,san) -%}
+                                        {%- if occup2_films[k][0]!=''  -%}
+                                            {%- set occup2=occup2_films[k][0] -%}
+                                        {%- else -%}
+                                            {% set occup2='-' %}
+                                        {%- endif -%}
+                                        
+                                        |-
+                                        | {{occup2}} || {{occup2_films[k][1]}}{{' ('}}{{occup2_filmseng[k][1]}}{{')'}} || [https://www.imdb.com/title/{{occup2_films[k][2]}}/ {{occup2_films[k][1]}} ]
+                                        {{'\n'}}
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}</div>{{- '\n' -}}
+                    {%- endif -%}
+                    {%- else -%}
+                    {%- if filmo_all_film_ocupations_filmo[1] != float and san is not float and filmo_all_film_ocupations[1] !='' and careercsentence[1]!='' -%}
+                    
+                        ===={{careercsentence[1]}}===={{- '\n' -}}
+                        
+                        
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[1] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[1]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                        {{- '\n' -}}
+                            
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for k in range(0,san) -%}
+                                        {%- if occup2_films[k][0]!=''  -%}
+                                            {%- set occup2=occup2_films[k][0] -%}
+                                        {%- else -%}
+                                            {% set occup2='-' %}
+                                        {%- endif -%}
+                                        
+                                        |-
+                                        | {{occup2}} || {{occup2_films[k][1]}}{{' ('}}{{occup2_filmseng[k][1]}}{{')'}} || [https://www.imdb.com/title/{{occup2_films[k][2]}}/ {{occup2_films[k][1]}} ]
+                                        {{'\n'}}
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}{{- '\n' -}}
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endif -%}
+            
+
+            {%- if filmo_all_film_ocupations_filmo[2]=='' -%}
+            
+            {%- else -%}
+            
+            {{- '\n' -}}
+            {%- if occup3_num>=15 -%}
+                    {%- if filmo_all_film_ocupations_filmo[2] is not float and ran is not float and filmo_all_film_ocupations[2] !='' and careercsentence[2]!=''  -%}
+                    
+                    ===={{careercsentence[2]}}===={{-'\n'-}}
+                        
+                       
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[2] +  ' గా పని చేసిన  చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[2]+' గా '+Name+' పని చేసిన  చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                      
+                        {{- '\n' -}}
+                            <div style="overflow-x: scroll;height : 40em;">
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for l in range(0,ran) -%}
+                                        {%- if occup3_films[l][0]!=''  -%}
+                                            {%- set occup3=occup3_films[l][0] -%}
+                                        {%- else -%}
+                                            {% set occup3='-' %}
+                                        {%- endif -%}
+                                        |-
+                                        | {{occup3}} || {{occup3_films[l][1]}}{{' ('}}{{occup3_filmseng[l][1]}}{{')'}} || [https://www.imdb.com/title/{{occup3_films[l][2]}}/ {{occup3_films[l][1]}} ]
+                                        {{'\n'}}
+                                        
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}</div>{{- '\n' -}}
+                    {%- endif -%}
+                {%- else -%}
+                
+                    {%- if filmo_all_film_ocupations_filmo[2] is not float and occup3_films is not float and ran is not float and filmo_all_film_ocupations[2] !='' and careercsentence[2]!=''  -%}
+                    
+                        ===={{careercsentence[2]}}===={{- '\n' -}}
+                        
+                       
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[2] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[2]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                        {{- '\n' -}}
+                            
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    
+                                    {%- for l in range(0,ran) -%}
+                                        {%- if occup3_films[l][0]!=''  -%}
+                                            {%- set occup3=occup3_films[l][0] -%}
+                                        {%- else -%}
+                                            {% set occup3='-' %}
+                                        {%- endif -%}
+                                        |-
+                                        | {{occup3}} || {{occup3_films[l][1]}}{{' ('}}{{occup3_filmseng[l][1]}}{{')'}} || [https://www.imdb.com/title/{{occup3_films[l][2]}}/ {{occup3_films[l][1]}} ]
+                                        {{'\n'}}
+                                        
+                                        
+                                    {%- endfor -%}
+                                    
+                                    
+                                    |}{{- '\n' -}}
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endif -%}
+            
+
+            {%- if filmo_all_film_ocupations_filmo[3]=='' -%}
+            
+            {%- else -%}
+                
+                {{- '\n' -}} 
+                {%- if occup4_num>=15 -%}
+                        {%- if filmo_all_film_ocupations_filmo[3] != float  and filmo_all_film_ocupations[3] !='' and careercsentence[3]!=''  -%}
+                        
+                        ===={{careercsentence[3]}}===={{-'\n'-}}
+                            
+                            
+                            
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[3] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[3]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                   
+                            {{- '\n' -}}
+                                <div style="overflow-x: scroll;height : 40em;">
+                                    {| class = "wikitable"
+                                        |-
+                                        ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                        |-
+                                        {%- for q in range(0,man) -%}
+                                            {%- if occup4_films[q][0]!=''  -%}
+                                                {%- set occup4=occup4_films[q][0] -%}
+                                            {%- else -%}
+                                                {% set occup4='-' %}
+                                            {%- endif -%}
+                                            
+                                            |-
+                                            | {{occup4}} || {{occup4_films[q][1]}}{{' ('}}{{occup4_filmseng[q][1]}}{{')'}} || [https://www.imdb.com/title/{{occup4_films[q][2]}}/ {{occup4_films[q][1]}} ]
+                                            {{'\n'}}
+                                            
+                                        {%- endfor -%}
+                                        
+                                        |}</div>
+                        {{- '\n\n' -}}
+                        {%- endif -%}
+                {%- else -%}
+                        {%- if filmo_all_film_ocupations_filmo[3] != float  and filmo_all_film_ocupations[3] !='' and careercsentence[3]!=''  -%}
+                        
+                        ===={{careercsentence[3]}}===={{- '\n' -}}
+                            
+
+                          
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[3] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[3]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                       
+                            {{- '\n' -}}
+                                
+                                    {| class = "wikitable"
+                                        |-
+                                        ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                        |-
+                                        {%- for q in range(0,man) -%}
+                                            {%- if occup4_films[q][0]!=''  -%}
+                                                {%- set occup4=occup4_films[q][0] -%}
+                                            {%- else -%}
+                                                {% set occup4='-' %}
+                                            {%- endif -%}
+                                            
+                                            |-
+                                            | {{occup4}} || {{occup4_films[q][1]}}{{' ('}}{{occup4_filmseng[q][1]}}{{')'}} || [https://www.imdb.com/title/{{occup4_films[q][2]}}/ {{occup4_films[q][1]}} ]
+                                            {{'\n'}}
+                                            
+                                        {%- endfor -%}
+                                        
+                                        |}
+                        {{- '\n' -}}
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- endif -%}
+        {%- endif -%}
+
+        {%- if Gender== 'male' -%}
+        
+    
+        {%- if filmo_all_film_ocupations_filmo[0]=='' -%}
+            
+            {%- else -%}
+            
+            {{- '\n' -}}
+            {%- if occup1_num>=15 -%}
+                {%- if filmo_all_film_ocupations_filmo[0] != float  and sam is not float and careercsentence[0] is not float and lencareer!=-1 and occup is not float and filmo_all_film_ocupations[0] !='' and careercsentence[0]!='' -%}
+                
+                ===={{careercsentence[0]}}===={{- '\n' -}}
+                    
+
+                   
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[0] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[0]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}<ref name='filmo'>[https://www.imdb.com/name/{{IMDB_id}}/?nmdp=1&ref_=nm_ql_4#filmography {{Name}} ఫిల్మోగ్రఫీ లింక్] </ref>
+                    
+                    {{- '\n' -}}
+                        <div style="overflow-x: scroll;height : 40em;">
+                            {| class = "wikitable"
+                                |-
+                                ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                |-
+                                {%- for j in range(0,sam) -%}
+                                {%- if occup1_films[j][0]!=''  -%}
+                                        {%- set occup1=occup1_films[j][0] -%}
+                                    {%- else -%}
+                                        {% set occup1='-' %}
+                                    {%- endif -%}
+                                    |-
+                                    | {{occup1}} || {{occup1_films[j][1]}}{{' ('}}{{occup1_filmseng[j][1]}}{{')'}} || [https://www.imdb.com/title/{{occup1_films[j][2]}}/ {{occup1_films[j][1]}} ]
+                                    {{'\n'}}
+                                {%- endfor -%}
+                                
+                                |}</div>{{- '\n' -}}
+                {%- endif -%}
+            {%- else -%}
+                {%- if filmo_all_film_ocupations_filmo[0] != float and filmo_all_film_ocupations[0] !='' and careercsentence[0]!=''  -%}
+                
+                    ===={{careercsentence[0]}}===={{- '\n' -}}
+                
+                    
+
+                    
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[0] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[0]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}<ref name='filmo'>[https://www.imdb.com/name/{{IMDB_id}}/?nmdp=1&ref_=nm_ql_4#filmography {{Name}} ఫిల్మోగ్రఫీ లింక్]</ref>
+                       
+                    {{- '\n' -}}
+                        
+                            {| class = "wikitable"
+                                |-
+                                ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                |-
+                                {%- for j in range(0,sam) -%}
+                                {%- if occup1_films[j][0]!=''  -%}
+                                        {%- set occup1=occup1_films[j][0] -%}
+                                    {%- else -%}
+                                        {% set occup1='-' %}
+                                    {%- endif -%}
+                                    |-
+                                    | {{occup1}} || {{occup1_films[j][1]}}{{' ('}}{{occup1_filmseng[j][1]}}{{')'}} || [https://www.imdb.com/title/{{occup1_films[j][2]}}/ {{occup1_films[j][1]}} ]
+                                    {{'\n'}}
+                                {%- endfor -%}
+                                
+                                |}{{- '\n' -}}
+                {%- endif -%}
+            {%- endif -%}
+        {%- endif -%}
+        
+
+        {%- if filmo_all_film_ocupations_filmo[1]=='' -%}
+            
+            {%- else -%}
+            
+            {{- '\n' -}}
+            {%- if occup2_num>=15 -%}
+                {%- if filmo_all_film_ocupations_filmo[1] != float and filmo_all_film_ocupations[1] !='' and careercsentence[1]!=''  -%}
+                
+                ===={{careercsentence[1]}}===={{-'\n'-}} 
+                    
+                    
+                    
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[1] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[1]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                    {{- '\n' -}}
+                        <div style="overflow-x: scroll;height : 40em;">
+                            {| class = "wikitable"
+                                |-
+                                ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                |-
+                                {%- for k in range(0,san) -%}
+                                    {%- if occup2_films[k][0]!=''  -%}
+                                        {%- set occup2=occup2_films[k][0] -%}
+                                    {%- else -%}
+                                        {% set occup2='-' %}
+                                    {%- endif -%}
+                                    
+                                    |-
+                                    | {{occup2}} || {{occup2_films[k][1]}}{{' ('}}{{occup2_filmseng[k][1]}}{{')'}} || [https://www.imdb.com/title/{{occup2_films[k][2]}}/ {{occup2_films[k][1]}} ]
+                                    {{'\n'}}
+                                    
+                                {%- endfor -%}
+                                
+                                |}</div>{{- '\n' -}}
+                {%- endif -%}
+            {%- else -%}
+                {%- if filmo_all_film_ocupations_filmo[1] != float  and san is not float and filmo_all_film_ocupations[1] !='' and careercsentence[1]!='' -%}
+                
+                    ===={{careercsentence[1]}}===={{- '\n' -}}
+                
+                    
+                    
+                    
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[1] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[1]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                    {{- '\n' -}}
+                        
+                            {| class = "wikitable"
+                                |-
+                                ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                |-
+                                {%- for k in range(0,san) -%}
+                                    {%- if occup2_films[k][0]!=''  -%}
+                                        {%- set occup2=occup2_films[k][0] -%}
+                                    {%- else -%}
+                                        {% set occup2='-' %}
+                                    {%- endif -%}
+                                    
+                                    |-
+                                    | {{occup2}} || {{occup2_films[k][1]}}{{' ('}}{{occup2_filmseng[k][1]}}{{')'}} || [https://www.imdb.com/title/{{occup2_films[k][2]}}/ {{occup2_films[k][1]}} ]
+                                    {{'\n'}}
+                                    
+                                {%- endfor -%}
+                                
+                                |}{{- '\n' -}}
+                {%- endif -%}
+            {%- endif -%}
+        {%- endif -%}
+
+            {%- if filmo_all_film_ocupations_filmo[2]=='' -%}
+            {%- else -%}
+            
+                     
+                {%- if occup3_num>=15 -%}
+                        {%- if filmo_all_film_ocupations_filmo[2] != float and ran is not float and filmo_all_film_ocupations[2] !='' and careercsentence[2]!='' -%}
+                        
+                        ===={{careercsentence[2]}}===={{- '\n' -}} 
+                            
+                            
+                           
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[2] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[2]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                            {{- '\n' -}}
+                                <div style="overflow-x: scroll;height : 40em;">
+                                    {| class = "wikitable"
+                                        |-
+                                        ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                        |-
+                                        {%- for l in range(0,ran) -%}
+                                            {%- if occup3_films[l][0]!=''  -%}
+                                                {%- set occup3=occup3_films[l][0] -%}
+                                            {%- else -%}
+                                                {% set occup3='-' %}
+                                            {%- endif -%}
+                                            |-
+                                            | {{occup3}} || {{occup3_films[l][1]}}{{' ('}}{{occup3_filmseng[l][1]}}{{')'}} || [https://www.imdb.com/title/{{occup3_films[l][2]}}/ {{occup3_films[l][1]}} ]
+                                            {{'\n'}}
+                                            
+                                        {%- endfor -%}
+                                        
+                                        |}</div>{{- '\n' -}}
+                        {%- endif -%}
+                {%- else -%}
+                        {%- if filmo_all_film_ocupations_filmo[2] != float and ran is not float and filmo_all_film_ocupations[2] !='' and careercsentence[2]!='' -%}
+                        
+                            ===={{careercsentence[2]}}===={{- '\n' -}} 
+                            
+                            
+                            
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[2] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[2]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                      
+                            {{- '\n' -}}
+                                
+                                    {| class = "wikitable"
+                                        |-
+                                        ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                        |-
+                                        {%- for l in range(0,ran) -%}
+                                            {%- if occup3_films[l][0]!=''  -%}
+                                                {%- set occup3=occup3_films[l][0] -%}
+                                            {%- else -%}
+                                                {% set occup3='-' %}
+                                            {%- endif -%}
+                                            |-
+                                            | {{occup3}} || {{occup3_films[l][1]}}{{' ('}}{{occup3_filmseng[l][1]}}{{')'}} || [https://www.imdb.com/title/{{occup3_films[l][2]}}/ {{occup3_films[l][1]}} ]
+                                            {{'\n'}}
+                                            
+                                        {%- endfor -%}
+                                        
+                                        |}{{- '\n' -}}
+                        {%- endif -%}
+                {%- endif -%}
+            {%- endif -%}
+            
+            
+            {%- if filmo_all_film_ocupations_filmo[3]=='' -%}
+            
+            
+            {%- else -%}
+            
+                    {{- '\n' -}}
+                {%- if occup4_num>=15 -%}
+                    {%- if filmo_all_film_ocupations_filmo[3] is not  float and filmo_all_film_ocupations[3] !='' and careercsentence[3]!=''  -%}
+                    
+                    ===={{careercsentence[3]}}===={{- '\n' -}} 
+                        
+                        
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[3] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[3]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                      
+                        {{- '\n' -}}
+                            <div style="overflow-x: scroll;height : 40em;">
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for q in range(0,man) -%}
+                                        {%- if occup4_films[q][0]!=''  -%}
+                                            {%- set occup4=occup4_films[q][0] -%}
+                                        {%- else -%}
+                                            {% set occup4='-' %}
+                                        {%- endif -%}
+                                        
+                                        |-
+                                        | {{occup4}} || {{occup4_films[q][1]}}{{' ('}}{{occup4_filmseng[q][1]}}{{')'}} || [https://www.imdb.com/title/{{occup4_films[q][2]}}/ {{occup4_films[q][1]}} ]
+                                        {{'\n'}}
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}</div>
+                    {{- '\n' -}}
+                    {%- endif -%}
+                {%- else -%}
+                    {%- if filmo_all_film_ocupations_filmo[3] != float and man is not float and filmo_all_film_ocupations[3] !='' and careercsentence[3]!='' -%}
+                    
+                        ===={{careercsentence[3]}}===={{- '\n' -}}
+                        
+
+                        
+                        {%- set filmorand=[Name+ ' ' +filmo_all_film_ocupations[3] +  ' గా పని చేసిన చిత్రాల జాబితా. ',
+                                            filmo_all_film_ocupations[3]+' గా '+Name+' పని చేసిన చిత్రాల జాబితా. ']|random-%}{{filmorand}}
+                        
+                        {{- '\n' -}}
+                            
+                                {| class = "wikitable"
+                                    |-
+                                    ! చిత్రం విడుదల సంవత్సరం !! చిత్రం పేరు  !! చిత్రం ఐయండీబీ లింకు
+                                    |-
+                                    {%- for q in range(0,man) -%}
+                                        {%- if occup4_films[q][0]!=''  -%}
+                                            {%- set occup4=occup4_films[q][0] -%}
+                                        {%- else -%}
+                                            {% set occup4='-' %}
+                                        {%- endif -%}
+                                        
+                                        |-
+                                        | {{occup4}} || {{occup4_films[q][1]}}{{' ('}}{{occup4_filmseng[q][1]}}{{')'}} || [https://www.imdb.com/title/{{occup4_films[q][2]}}/ {{occup4_films[q][1]}} ]
+                                        {{'\n'}}
+                                        
+                                    {%- endfor -%}
+                                    
+                                    |}
+                    {{- '\n' -}}
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endif -%}
+        {%- endif -%}
+{%- endmacro -%}{#- year, award_outcome, award_name, award_description -#}
+{%- macro awards(Year_Of_The_Award,Award_Outcome,Award_Category,Award_Categoryeng,Award_Description,Name) -%}
+     {{- "==అవార్డులు==" -}}{{'\n\n'}}
+     {%- if Award_Category is not float -%}
+     {{Name}} అవార్డుల జాబితా.<ref name='award'>[https://www.imdb.com/name/{{IMDB_id}}/awards?ref_=nmawd_ql_1 {{Name}} అవార్డ్స్ లింక్]</ref> {{- '\n' -}}
+        {%- if length>=15 -%}
+        <div style="overflow-x: scroll;height : 40em;">
+            {| class="wikitable sortable "
+                ! scope="col" | సంవత్సరం
+                ! scope="col" | అవార్డు 
+                ! scope="col" | అవార్డు క్యాటగిరీ
+                ! scope="col" | ఫలితం
+            |-  
+            {%- for i in range(length) -%}
+                {%- if Year_Of_The_Award[i]!=''  -%}
+                    {%- set a=Year_Of_The_Award[i] -%}
+                {%- else -%}
+                    {% set a='-' %}
+                {%- endif -%}
+                {%- if Award_Category[i]!=' ' and Award_Category[i]!=''  -%}
+                    {% set b=[Award_Category[i],' (',Award_Categoryeng[i],')']|join('') %}
+                {%- else -%}
+                    {% set b='-' %}
+                {%- endif -%}
+                {%- if Award_Outcome[i]!=''  and Award_Outcome[i]=='Winner' -%}
+                    {% set c='{{won|విజేత}}' %}
+                {%- elif  Award_Outcome[i]!=''  and Award_Outcome[i]=='Nominee' -%}
+                    {% set c='{{nom|పేర్కొనబడ్డారు}}' %}
+                {%- else -%}
+                    {% set c='-' %}
+                {%- endif -%}
+                {%- if Award_Description[i]!=''  -%}
+                    {% set d=Award_Description[i] %}
+                {%- else -%}
+                    {% set d='-' %}
+                {%- endif -%}
+
+                {{'\n'}}
+                    |-
+                    | {{a}} || {{b}} || {{d}}  || {{c}}
+                    |-
+                    {{'\n'}}
+                    {%- endfor -%}
+                    |}</div>{{- '\n\n' -}}
+        
+
+            
+
+        {%- else -%}
+            {| class="wikitable sortable "
+                ! scope="col" | సంవత్సరం
+                ! scope="col" | అవార్డు 
+                ! scope="col" | అవార్డు క్యాటగిరీ
+                ! scope="col" | ఫలితం
+            |-  
+            {%- for i in range(length) -%}
+                {%- if Year_Of_The_Award[i]!=''  -%}
+                    {%- set a=Year_Of_The_Award[i] -%}
+                {%- else -%}
+                    {% set a='-' %}
+                {%- endif -%}
+                {%- if Award_Category[i]!='' and Award_Category[i]!=' '  -%}
+                    {% set b=[Award_Category[i],' (',Award_Categoryeng[i],')']|join('') %}
+                {%- else -%}
+                    {% set b='-' %}
+                {%- endif -%}
+                {%- if Award_Outcome[i]!=''  and Award_Outcome[i]=='Winner' -%}
+                    {% set c='{{won|విజేత}}' %}
+                {%- elif  Award_Outcome[i]!=''  and Award_Outcome[i]=='Nominee' -%}
+                    {% set c='{{nom|పేర్కొనబడ్డారు}}' %}
+                {%- else -%}
+                    {% set c='-' %}
+                {%- endif -%}
+                {%- if Award_Description[i]!=''  -%}
+                    {% set d=Award_Description[i] %}
+                {%- else -%}
+                    {% set d='-' %}
+                {%- endif -%}
+
+                {{'\n'}}
+                    | {{a}} || {{b}} || {{d}}  || {{c}}
+                    |-
+                    {{'\n'}}
+                    {%- endfor -%}
+                    |}</div>{{- '\n\n' -}}
+        
+
+            
+        {%- endif -%}
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro references(IMDB_id,wiki_data_id) -%}
+    {{- '' -}}
+    {{- "==మూలాలు==" -}}
+    {{- '\n' -}}
+    {{'{{reflist}}'}}
+{%- endmacro -%}
+
+{#external links#}
+{%- macro externallinks(Name,facebookid,instaid,twitterid,IMDB_id) -%}
+    {{- '\n\n' -}}
+    {{- "==బాహ్య లింకులు==" -}}{{-'\n'-}}
+    
+    {{Name}} ఐఎండిబి(IMDb) పేజీ: [https://www.imdb.com/name/{{IMDB_id}} {{IMDB_id}}]
+    {{- '\n\n' -}}
+    {%- if facebookid is not float -%}
+        {{Name}} ఫేసుబుక్ ఐడి: [https://www.facebook.com/{{facebookid}}/ {{facebookid}}]
+        {{- '\n\n' -}}
+    {%- endif -%}
+    {%- if instaid is not float -%}
+        {{Name}} ఇంస్టాగ్రామ్ ఐడి: [https://www.instagram.com/{{instaid}}/?hl=en {{instaid}}]
+        {{- '\n\n' -}}
+    {%- endif -%}
+    {%- if twitterid is not float -%}
+        {{Name}} ట్విట్టర్ ఐడి: [https://twitter.com/{{twitterid}}?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor {{twitterid}}]
+        {{- '\n\n' -}}
+    {%- endif -%}
+{%- endmacro -%}
+
+
+{#categories#}
+{%- macro categories(wiki_family_name,Actor_POB,English_filmo_all_film_ocupations,wiki_DOB_year,DOD_year,native,occup,Award_Categoryeng,award_outcome) -%}
+{% set category={'Artist':''} %}
+[[Category: తెవికీ సినిమా కళాకారులు]]
+{%- if Actor_POB is not float -%}
+[[Category:{{Actor_POB}} నుండి ప్రముఖులు]]
+{%- endif -%}
+{%- if English_filmo_all_film_ocupations is not float -%}
+{%-  if English_filmo_all_film_ocupations[0]=='Actor' or English_filmo_all_film_ocupations[0]=='Actress' -%}
+[[Category:నటులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Editor' or English_filmo_all_film_ocupations[0]=='Editorial' -%}
+[[Category:సంపాదకీయలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Casting director' or English_filmo_all_film_ocupations[0]=='Casting' -%}
+[[Category:తారాగణ దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Director' -%}
+[[Category:దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Art director' or English_filmo_all_film_ocupations[0]=='Art' -%}
+[[Category:కళా దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Producer' -%}
+[[Category:నిర్మాతలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Makeup' -%}
+[[Category:మేకప్ ఆర్టిస్ట్]]
+{%- elif English_filmo_all_film_ocupations[0]=='Location management' -%}
+[[Category:స్థాన నిర్వాహకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Musician' -%}
+[[Category:సంగీతకారులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Production manager' -%}
+[[Category:ఉత్పత్తి నిర్వాహకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Comedian' -%}
+[[Category:హాస్య నటులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Animation' -%}
+[[Category:యానిమేటర్లు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Cinematographer' or English_filmo_all_film_ocupations[0]=='Camera and Electrical' -%}
+[[Category:ఛాయాగ్రహకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Costume and Wardrobe' or English_filmo_all_film_ocupations[0]=='Costume designer' -%}
+[[Category:వస్త్ర రూపకర్తలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Second Unit Director or Assistant Director' -%}
+[[Category:సహాయ దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Writer' or English_filmo_all_film_ocupations[0]=='Script and Continuity' -%}
+[[Category:రచయితలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Composer' or English_filmo_all_film_ocupations[0]=='Music'  -%}
+[[Category:సంగీత దర్శకులు]]
+{%-endif%}{%endif%}
+{%- if wiki_DOB_year !='1.0' -%}
+[[Category:{{wiki_DOB_year}} జననాలు]]    
+{%- endif -%}
+{%- if DOD !='1.0' -%}
+[[Category:{{DOD_year}} మరణాలు]]    
+{%- endif -%}
+{%- if Native_language is not float and English_filmo_all_film_ocupations is not float -%}
+{%- if English_filmo_all_film_ocupations[0]=='Actor' or English_filmo_all_film_ocupations[0]=='Actress' -%}
+[[Category:{{native[0]}} సినిమా నటులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Editor' or English_filmo_all_film_ocupations[0]=='Editorial' -%}
+[[Category:{{native[0]}} సినిమా సంపాదకీయలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Casting director' or English_filmo_all_film_ocupations[0]=='Casting' -%}
+[[Category:{{native[0]}} సినిమా తారాగణ దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Director' -%}
+[[Category:{{native[0]}} సినిమా దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Art director' or English_filmo_all_film_ocupations[0]=='Art' -%}
+[[Category:{{native[0]}} సినిమా కళా దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Producer' -%}
+[[Category:{{native[0]}} సినిమా నిర్మాతలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Makeup' -%}
+[[Category:{{native[0]}} మేకప్ ఆర్టిస్ట్]]
+{%- elif English_filmo_all_film_ocupations[0]=='Musician' -%}
+[[Category:{{native[0]}} సినిమా సంగీతకారులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Production manager' -%}
+[[Category:{{native[0]}} ప్రోడక్షన్  మేనేజర్]]
+{%- elif English_filmo_all_film_ocupations[0]=='Comedian' -%}
+[[Category:{{native[0]}} సినిమా హాస్య నటులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Animation' -%}
+[[Category:{{native[0]}} సినిమా యానిమేటర్లు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Cinematographer' or English_filmo_all_film_ocupations[0]=='Camera and Electrical' -%}
+[[Category:{{native[0]}} సినిమా ఛాయాగ్రహకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Costume and Wardrobe' or English_filmo_all_film_ocupations[0]=='Costume designer' -%}
+[[Category:{{native[0]}} కాస్ట్యూమ్ డిజైనర్]]
+{%- elif English_filmo_all_film_ocupations[0]=='Second Unit Director or Assistant Director' -%}
+[[Category:{{native[0]}} సినిమా సహాయ దర్శకులు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Writer' or English_filmo_all_film_ocupations[0]=='Script and Continuity' -%}
+[[Category:{{native[0]}} సినిమా రచయితలు]]
+{%- elif English_filmo_all_film_ocupations[0]=='Composer' or English_filmo_all_film_ocupations[0]=='Music'  -%}
+[[Category:{{native[0]}} సినిమా సంగీత దర్శకులు]]
+{%- endif -%}{%- endif -%}
+{%- if native is not float and occup is not float -%}
+{%for i in native%} 
+{%- if occup[0]=='నటుడు' or occup[0]=='నటి' or occup[0]=='యాక్టర్' -%}
+[[Category:{{i}} సినిమా నటులు]]
+{%- elif occup[0]=='దర్శకుడు' or occup[0]=='డైరెక్టర్' -%}
+[[Category:{{i}} సినిమా దర్శకులు]]
+{%- elif occup[0]=='నిర్మాత' or occup[0]=='ప్రొడ్యూసర్' -%}
+[[Category:{{i}} సినిమా నిర్మాతలు]]
+{%- elif occup[0]=='రచయిత' or occup[0]=='రైటర్' -%}
+[[Category:{{i}} సినిమా రచయితలు]]
+{%- elif occup[0]=='సంగీతం' or occup[0]=='మ్యూజిక్' -%}
+[[Category:{{i}} సినిమా సంగీత దర్శకులు]]
+{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- if Award_Categoryeng is not float and Award_outcome is not float -%}
+{%- for i in range(length) -%}
+{%- if Award_Categoryeng[i]=='Filmfare Award' and Award_Outcome[i]=='Winner'  -%}
+[[Category: ఫిలింఫేర్ అవార్డుల విజేతలు]]
+{% break %}
+{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- if Award_Categoryeng is not float and Award_outcome is not float -%}
+{%- for i in range(length) -%}
+{%- if Award_Categoryeng[i]=='Oscar' and Award_Outcome[i]=='Winner'  -%}
+[[Category: ఆస్కార్ అవార్డుల విజేతలు]]
+{%break%}
+{%- endif -%}{%- endfor -%}{%- endif -%}
+{%- endmacro -%}
+
+
+{#function calling#}
+{{- infobox(IMDB_id,Image,Name, Name_in_native_languageinfo, Birthname, Alternate_Name, wiki_DOB,DOD,Actor_POB, Genderinfo,Citizenship, wiki_occupation,
+Work_period_start,wiki_family_name,twitterid,instaid,wiki_DOB_year,DOD_year,Work_period_end,Height,Star_Sign,Ethnic_group,wiki_spouse_name,Child_Name,Father_Name, Mother_Name,Wiki_commons_category,wiki_siblings,Relatives,Signature_image,careercsentence,lencareer,infoocup) }}
+{{- introduction(IMDB_id,Name,Nameeng,intro_filmo,lenintro,lennew,Gender,work_startyear,filmo_occupation,DOD,filmo_all_film_ocupations,debut_filmsip,latest_filmsip,present_date,lenl,lenn,lenf,lenalter,Citizenship,lenc,Native_language,Languages_spoken,Name_in_native_language,debut_filmsf,latest_filmsf,occup1_num,occup2_num,occup3_num,occup4_num,Knownfor,Knownforlength) }}
+
+
+{{- career(IMDB_id,name,work_startyear,English_occup,wiki_data_id,length,Award_Outcome,Award_Now,Award_Non,Year_Of_The_Award,Award_Category,Award_Description,occup,occup1_num,occup2_num,occup3_num,occup4_num,debut_films,debut_filmseng,latest_films,latest_filmseng,Gender,occuplen,DOD,careercsentence,lencareer,Award_Categoryeng) -}}
+
+{{- personal_life(IMDB_id,wiki_data_id,Name,Gender,wiki_DOB,Actor_POB,Birthname,Alternate_Name,lensib,lenrela,Father_Name,Mother_Name,wiki_siblings,wiki_family_name,Relatives,wiki_spouse_namef,wiki_spouse_name,Child_Name,DOD) -}}
+
+
+{{- filmo(IMDB_id,Name,filmo_occupationfilmo,filmo_all_film_ocupations_filmo,latest_films_filmo,occup1_num,occup1_films,occup2_num,occup2_films,occup3_num,occup3_films,occup4_num,occup4_films,occup1_filmseng,occup2_filmseng,occup3_filmseng,occup4_filmseng,debut_films_filmo,English_occup,careercsentence,occup) -}}
+
+{{- awards(Year_Of_The_Award,Award_Outcome,Award_Category,Award_Categoryeng,Award_Description,Name) -}}
+
+{{- references(IMDB_id,wiki_data_id) -}}
+
+{{- externallinks(Name,facebookid,instaid,twitterid,IMDB_id) -}}
+{{-  categories(wiki_family_name,Actor_POB,English_filmo_all_film_ocupations,wiki_DOB_year,DOD_year,native,occup,Award_Categoryeng,award_outcome) -}}
