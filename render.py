@@ -1125,7 +1125,7 @@ def main():
 	#env = Environment(loader=file_loader)
 	env = Environment(extensions=['jinja2.ext.loopcontrols'],loader=file_loader)
 	#env = Environment(loader=file_loader)
-	template = env.get_template('template29 (1).j2')
+	template = env.get_template('final_template.j2')
 	moviesDF =pickle.load(open('/Users/sameersanam/m/telengfin7_7.pkl', 'rb'))
 	#id=moviesDF.loc[1]
 	#data=getData(id)
