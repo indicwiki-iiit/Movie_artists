@@ -14,7 +14,7 @@ for i, movieId in enumerate(ids):
     artists = getData(row)
     file_loader = FileSystemLoader('/Users/sameersanam/m/new')
     env = Environment(extensions=['jinja2.ext.loopcontrols'],loader=file_loader)
-    template = env.get_template('template29 (1).j2')
+    template = env.get_template('final_template.j2')
     text = template.render(artists)
     text = text.replace('&','&amp;')
     text = text.replace('<','&lt;')
