@@ -58,3 +58,20 @@ This repository contains the details and data under TeWiki Project for Movies do
 * oscar_wikiid2k.csv-- These are the wiki data ids for the oscar artists.
 
 * sam.csv-- This is the final csv.
+
+## Scraping 
+
+> Github folder Link: https://github.com/indicwiki-iiit/Movie_artists/tree/main/scrapping
+
+* awards_main.py-- This is the sraping code used for extracting awards details.
+
+* bio_main.py-- This is the sraping code used for extracting personal details.
+
+* filmo_main.py-- This is the sraping code used for extracting filmography details.
+
+* info_main.py-- This is the sraping code used for extracting Infobox details.
+
+* wiki.py-- This is the sraping code used for extracting Wiki data details.
+
+* wiki_oscar.py-- This is the sraping code used for extracting Wiki data details for Oscar Artists.
+
