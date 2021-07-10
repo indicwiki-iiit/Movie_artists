@@ -1,4 +1,4 @@
-from render29 import getData
+from render import getData
 from genXML import addPage, tewiki
 import pickle
 from jinja2 import Environment, FileSystemLoader 
