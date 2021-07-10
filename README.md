@@ -1,5 +1,5 @@
 # Movie_artists
-Movie Arists is a branch of IndicWiki Project
+Movie Artists is a branch of IndicWiki Project
 
 ## Description
 The goal of this project is to automate the process of generation of wikipedia articles for Movie Artists in Telugu language.
