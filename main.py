@@ -2,7 +2,7 @@ from render import getData
 from genXML import addPage, tewiki
 import pickle
 from jinja2 import Environment, FileSystemLoader 
-moviesDF = pickle.load(open('/Users/sameersanam/m/telengfin6_7.pkl', 'rb'))
+moviesDF = pickle.load(open('/Users/sameersanam/m/telengfin7_7.pkl', 'rb'))
 ids = moviesDF.IMDBid.tolist()
 ids =ids[0:1000:50]
 username = "Movieartists"
