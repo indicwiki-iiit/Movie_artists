@@ -75,3 +75,33 @@ This repository contains the details and data under TeWiki Project for Movies do
 
 * wiki_oscar.py-- This is the sraping code used for extracting Wiki data details for Oscar Artists.
 
+
+## telengfin7_7.pkl
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/telengfin7_7.pkl
+
+This is the final pickle file generated from the dataset.
+
+## Readme.md
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists#readme
+
+This file has links to the sample article created. It has English Wikipedia,Telugu Wikipedia and tewiki sandboxes. This also has a link to the documentation of what is done every week.
+
+## genXML.py
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/genXML.py
+
+This file contains the code for generating an XML file which has the data after rendering for an article.
+
+## Converting _to_pickle.py:
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/Converting%20_to_pickle.py
+
+This file contains code for reading the dataset and generating a pickle file
+
+## render.py
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/render.py
+
+This is the code used for rendering the movie articles using jinja2 template named main_template.j2 file in templates folder.
+
+## main.py
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/main.py
+
+This contains all xml code for generating movie artists xml.
