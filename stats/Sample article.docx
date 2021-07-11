@@ -1,0 +1,294 @@
+NOTE: 
+Sub-points(A,B..) are indicating randomised conditions.
+“/” indicates male,female conditions.
+(I,II...)Various cases for availability of attributes
+
+
+
+            
+
+
+Introduction: Occups, nativename, known for 
+Career: first occup [debu, total, latest], rem occups [debu [appro sentences, latest [appro sentences], rem occups [total films], starting year, total films, awards sentence, awards [wins, nominate]
+Personal: pob, dob, birth name, alternames, family name, parets, siblings, spouse, children, relatives, citizenship, languages , dod
+Filmography: usual 
+Awards: usual
+External links: imdb, rem social ids
+
+INTRO PARAGRAPH
+
+1:	{{Name}} ({{eName}}) ఒక {{filmo_occup[0}} గా ప్రసిద్ధి చెందింది/చెందాడు.
+2:  	ఈమె/ఇతడు {{filmo_all_film_ocupations}} గా కూడా పని చేసింది/చేసాడు.
+3:	 [languages spoken]
+	I. If one language:
+	   {{Name}} {{languages spoken}} భాష మాట్లాడగలడు/మాట్లాడగలదు.
+	II. If multiple languages:
+	   {{Name}} {{languages spoken}} భాషలు మాట్లాడగలడు/మాట్లాడగలదు.
+4: 	 [Name in native language]
+	   ఆమె/అతని ప్రాంతీయ భాషలో పేరు {{name in native language}}.
+
+
+5:	 [career started year]
+	   {{Name}} తన సినీ జీవితాన్ని {{started year}} సంవత్సరం లో ప్రారంభించాడు/ప్రారంభించింది.
+6:	 [debut film]
+I.(year of debutfilm is present)   
+A: {{year}} లో {{debut film}} ({{debut film in english}}) సినిమాతో తెరంగేట్రం చేసాడు/చేసింది.,
+B: {{Name}} {{year}} లో {{debut_film}} ({{debut_film english}}) సినిమాతో సినీ రంగానికి తొలి పరిచయం అయింది/అయ్యాడు.
+C: {{year}} లో {{debut_film}} ({{debut_film english}}) సినిమాతో ఆమె/అతని సినీ జీవితం ప్రారంభం అయింది.
+
+
+II.(year of debut film is not present)
+{{debut film}} ({{debut film in english}})సినిమాతో తెరంగేట్రం చేసాడు/చేసింది.
+ B:{{name}} {{debut film name}}({{debut film in english}}) సినిమాతో సినీ రంగానికి తొలి పరిచయం అయ్యాడు/అయింది.
+C: {{debut_film}} ({{debut_film english}}) సినిమాతో ఆమె/అతని సినీ జీవితం ప్రారంభం అయింది.
+
+
+
+7: 	 [latest films]
+	  I. If cinema is released:
+		{{year}} లో ఆఖరిగా {{movie name }}({{movie name in english}}) సినిమాతో ప్రజల ముందుకు వచ్చింది/వచ్చాడు.
+	  II. If cinema is not yet released:
+{{year}} లో {{movie name }}({{movie name in english}}) సినిమాతో ప్రజల ముందుకు వచ్చింది రాబోతుంది/రాబోతున్నాడు.
+  III. If year of film release is not present:
+          {{Latest_film name}} ({{latest_film name english}}) సినిమాతో ఆఖరిగా ప్రజల ముందుకు వచ్చాడు/వచ్చింది.
+
+  
+8:	[Total films]
+lineonumm=Total films
+if artist is dead:
+{{Name}} {{DOD}} నాటికి {{lineonumm}} సినిమాలలో పని చేశాడు/చేసింది.
+else:
+{{Name}} 2020 నాటికి {{lineonumm}} సినిమాలలో పని చేశాడు/చేసింది.
+
+
+9.   [citizenship]
+	I.If one citizenship:
+	  ఈమెకు {{citizenship}} పౌరసత్వం కలదు.
+II.If multiple citizenship:
+  A: ఈమెకు/ఇతడికి {{citizenship}} లాంటి వివిధ దేశాలలో పౌరసత్వం కలదు.
+  B: {{citizenship}} లాంటి వివిధ దేశాలలో ను పౌరసత్వం కలదు.
+	
+
+ PERSONAL LIFE (వ్యక్తిగత జీవితం)
+
+1:	[actor pob and dob]
+	I. If both place_of_birth and date_of_birth are not null
+		A: {{Name}} {{dob}} తేదీన {{pob}} లో జన్మించింది/జన్మించాడు.
+		B: {{Name}} జన్మ స్థలం {{pob}}, ఆమె {{dob}} న జన్మించింది/జన్మించాడు.
+	II. If date_of_birth is not null and place_of_birth is null
+		A: {{Name}} {{dob}} తేదీన జన్మించింది/జన్మించాడు.
+	III. If date_of_birth is null and place_of_birth is not null
+		A: {{Name}} {{pob}} లో జన్మించింది/జన్మించాడు.
+		B: {{Name}} జన్మ స్థలం {{pob}}.
+
+2:	[birth name]
+		A: ఈమె/ఇతడి అసలు పేరు {{birth name}}.
+		B: {{name}} అసలు పేరు {{birth name}}.
+
+3:	[alternate name]
+I. If one alternate_name present 
+{{Name}} ని {{alternate name}} అనే పేరుతో కూడా పిలుస్తారు.
+II. If multiple alternate_names present 
+	{{Name}} ని {{alternate name}} అనే పేర్లతో కూడా పిలుస్తారు.
+
+4:	[parents]
+	I. For mother and father
+		ఈమె/ఇతడి తల్లిదండ్రులు {{father name}}, {{mother name}} .
+	II. For father
+		ఈమె/ఇతడి తండ్రి పేరు {{father name}}.
+	III. For mother
+		ఈమె/ఇతడి తల్లి పేరు {{mother name}}.
+
+5:	[family name]
+		{{family name}} ఈమె/ఇతడి ఇంటి పేరు.
+
+6:	[sibilings]
+	I.  If one sibling
+		{{siblings}} ఈమె/ఇతడి తోబుట్టువు.
+	II. If multiple siblings
+		{{siblings}} ఈమె/ఇతడి తోబుట్టువులు.
+
+7:	[spouse]
+		{{name}} జీవిత భాగస్వామి {{spouse name}}.
+
+8:	[child]
+		ఆమె/అతని సంతానం {{child}}.
+
+
+9:	[relatives]
+	I. If one relative
+		చిత్ర పరిశ్రమలో ఈమె/ఇతడి బంధువు {{relaives}}.
+	II. If multiple relative
+		చిత్ర పరిశ్రమలో ఈమె/ఇతడి బంధువులు {{relatives}}.
+
+10:	[dod]
+		{{dod}} తేదీన మరణించింది/మరణించాడు.
+
+
+CAREER (కెరీర్)
+In career 1,2,3 sentences will be printed similarly for 4 occupations if present for that artist.
+
+1:	{{Name}}, {{english name}}, ' తన సినీ జీవితం లో   {{occupation]}}  గా  {{count of films}} సినిమాలలో పని చేసింది/చేసాడు. 
+2: [debut films] randomization
+	A: {year}లో  {debut_film} (debut_filmeng)  సినిమాతో {{occupation1}} గా తెరంగేట్రం చేసింది/చేసాడు.
+	B: {year}లో  {debut_film} ({debut_filmeng})  సినిమాతో  {{occupation1}} గా ప్రజలకు పరిచయం అయింది. 
+	C: {year} లో  {debut_film}({debut_filmeng})  సినిమాతో  {occupation1} గా తొలి పరిచయం అయింది/అయ్యాడు.
+3:[latest films]
+{{latest_films[i+1]}} ({{latest_filmseng[i+1]}}) లో {{occup1]}} గా  ఆఖరిగా  ప్రజల ముందుకు వచ్చింది/వచ్చాడు. 
+
+4:[movies list according to occupation]
+తన సినీ జీవితంలో ఇప్పటివరకు {{occup[0]}} గా {{occup1_num}} ,
+    {{occup[1]}} గా {{occup2_num}, {{occup[2]}} గా {{occup3_num}}, {{occup[3]}} గా {{occup4_num}} సినిమాలు చేసింది/చేసాడు.
+
+5:[awards]
+
+ if  'Winner' and all attributes present
+    తన సినీ జీవితంలో {{Year_Of_The_Award[i]}} సంవత్సరం లో   {{Award_Description[i]}} కి  గాను {{Award_Category[i]}} కై విజేతగా నిలిచింది/నిలిచాడు.
+
+ elif  'Winner' and Year_Of_The_Award[i]==Null                                                             తన సినీ జీవితంలో {{Award_Description[i]}} కి  గాను {{Award_Category[i]}} కై విజేతగా నిలిచింది/నిలిచాడు.
+  
+ elif  'Winner' and Award_Category[i]==Null 
+    తన సినీ జీవితంలో {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Description[i]}} కి  గాను విజేతగా నిలిచింది/నిలిచాడు.
+  
+ elif  'Winner' and Award_Description[i]==Null                                                     తన సినీ జీవితంలో {{Year_Of_The_Award[i]}} సంవత్సరం లో {{Award_Category[i]}} కై విజేతగా నిలిచింది/నిలిచాడు.
+
+
+6.  if  no of wins!=1
+    తన కెరీర్ లో {{no of wins}} పురస్కారాలు గెలుచుకుంది/గెలుచుకున్నాడు.
+else
+    తన కెరీర్ లో {{no of wins}} పురస్కారాన్ని గెలుచుకుంది/గెలుచుకున్నాడు.
+  
+
+ 7.   if no of nominees!=1
+    తన కెరీర్ లో {{no of nominees}} పురస్కారాలకు పేర్కొనబడింది/పేర్కొనబడ్డాడు.
+ else
+    తన కెరీర్ లో {{no of nominees}} పురస్కారానికి పేర్కొనబడింది/పేర్కొనబడ్డాడు.
+
+
+FILMOGRAPHY (ఫిల్మోగ్రఫీ)
+
+1: 	{{filmo_all_film_ocupation}}
+		A: {{name}} {{occupation}} గా పని చేసిన కొన్ని చిత్రాల జాబితా. '
+B: {{occupation}} గా {{name}} పని చేసిన కొన్ని చిత్రాల జాబితా. 
+
+  I. If count of films is >=15 added scrolling option for table
+  II.  If count of films is <15 default table will be printed
+
+
+చిత్రం విడుదల సంవత్సరం
+చిత్రం పేరు
+చిత్రం ఐయండీబీ లింకు
+-
+మధావి (Madhavi)
+మధావి
+
+
+
+2. Occupation 2
+
+చిత్రం విడుదల సంవత్సరం
+చిత్రం పేరు
+చిత్రం ఐయండీబీ లింకు
+-
+ఓరు బిలతికథ (Oru Bilathikadha)
+ఓరు బిలతికథ
+
+
+
+3. Occupation 3
+
+
+
+చిత్రం విడుదల సంవత్సరం
+చిత్రం పేరు
+చిత్రం ఐయండీబీ లింకు
+-
+కొత్త్ (Kothth)
+కొత్త్
+
+
+
+4. Occupation 4
+
+
+చిత్రం విడుదల సంవత్సరం
+చిత్రం పేరు
+చిత్రం ఐయండీబీ లింకు
+-
+కింగ్ ఫిష్ (King Fish)
+కింగ్ ఫిష్
+
+
+snapshot:
+
+
+
+
+
+
+AWARDS SECTION ()
+
+సంవత్సరం
+అవార్డు పేరు
+అవార్డు వివరణ
+ఫలితం
+2013
+సిల్వర్ లాటుస్ అవర్డ్ (Silver Lotus Award)
+సామాజిక సమస్యలపై ఉత్తమ చిత్రం: స్పిరిట్ (2012): ఆంటోనీ పెరుంబవూర్‌తో భాగస్వామ్యం చేయబడింది
+విజేత
+
+
+snapshot:
+
+
+
+1: 	 {{name}} అవార్డుల జాబితా.  
+I. If count of awards is >=15 added scrolling option for table
+II. If count of awatds <15 default table will be printed
+
+
+
+
+
+External Links(బాహ్య లింకులు)
+1:{{name}}ఫేసుబుక్ ఐడి
+2:{{nam}}ఇంస్టాగ్రామ్ ఐడి:
+3:{{name}}ట్విట్టర్ ఐడి
+4:{{nme}}ఐఎండిబి(IMDb) పేజీ
+
+CATEGORIES
+
+
+1:ఇంటిపేరు గల చిత్రసీమ ప్రముఖులు
+2:{{pob}}నుండి ప్రముఖులు
+3:{{star sign}}నక్షత్రం గుర్తు ప్రముఖులు
+4:according to their first occupation
+5:{{twitter}}ట్విట్టర్ ఖాతాదారులు
+6:{{insta}}ఇంస్టాగ్రామ్  ఖాతాదారులు
+7:{{dob}}జననాలు
+8:{{native language}}సినీ {{occup}}
+9:{{category}}పురస్కార గ్రహితలు
+10:{{awards}} ఫిలింఫేర్ అవార్డుల విజేతలు
+11:ఆస్కార్ అవార్డుల విజేతలు
+12:ఆస్కార్ అవార్డుల నామినీలు
+13:{{DOD_year}} మరణాలు
+Add oscar winners, nominees category
+
+
+
+		
+	
+
+
+ 
+	  
+
+
+	
+
+
+
+	
+
+
+	
