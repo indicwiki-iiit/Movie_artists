@@ -75,6 +75,14 @@ This repository contains the details and data under TeWiki Project for Movies do
 
 * wiki_oscar.py-- This is the sraping code used for extracting Wiki data details for Oscar Artists.
 
+## stats
+Github folder Link: https://github.com/indicwiki-iiit/Movie_artists/tree/main/stats
+
+* Template, translation details.docx.pdf --This is pdf containing details of the template translation  transliteration.
+
+* domain_attribute.pdf--This is pdf containing details of the domain attributes and count.
+
+* finalSTATS.xlsx-- this is the details of the number of stub, generic articles.
 
 ## telengfin7_7.pkl
 Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/telengfin7_7.pkl
