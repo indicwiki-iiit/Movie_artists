@@ -111,4 +111,4 @@ This is the code used for rendering the movie articles using jinja2 template nam
 ## main.py
 Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/main.py
 
-This contains all python code for generating movie artists xml, and this the final code used for generating the articles.
+This contains all python code for generating movie artists xml, and this the final code used for rendering the articles.
