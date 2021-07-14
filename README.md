@@ -83,6 +83,8 @@ Github folder Link: https://github.com/indicwiki-iiit/Movie_artists/tree/main/st
 
 * finalSTATS.xlsx-- this is the details of the number of stub, generic articles.
 
+* sample article for movie artists.pdf-- This is the sample article for movie artists.
+
 ## telengfin7_7.pkl
 Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/telengfin7_7.pkl
 
@@ -100,6 +102,11 @@ This file used in importing the standard format of xml.
 
 ## Converting _to_pickle.py:
 Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/Converting%20_to_pickle.py
+
+This file contains code for reading the dataset and generating a pickle file
+
+## report_movie_artists.docx.pdf:
+Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/report_movie_artists.docx.pdf
 
 This file contains code for reading the dataset and generating a pickle file
 
