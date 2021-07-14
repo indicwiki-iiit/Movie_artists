@@ -105,7 +105,7 @@ Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/Conv
 
 This file contains code for reading the dataset and generating a pickle file
 
-## report_movie_artists.docx.pdf:
+## report_movie_artists.pdf:
 Github file Link: https://github.com/indicwiki-iiit/Movie_artists/blob/main/report_movie_artists.docx.pdf
 
 This file contains code for reading the dataset and generating a pickle file
